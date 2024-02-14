@@ -1,14 +1,8 @@
-import Image from 'next/image';
-import raccoon from '../../../public/assets/racoon.svg';
 import styles from './style.module.css';
 
 const About: React.FC = () => {
   return (
     <div className={styles.about}>
-      <div className={styles.header_banner}>
-        <h2 className={styles.header}>who we are</h2>
-        <Image className={styles.raccoon_image} src={raccoon} width={100} height={100} alt="raccoon"></Image>
-      </div>
       <div className={styles.info}>
           <p>
           <strong>Keyboard Club @ UC San Diego</strong> is the largest student-run keyboard club in North America. We’re a diverse and inclusive community of students bound by our love for mechanical keyboards.
