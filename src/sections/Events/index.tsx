@@ -17,7 +17,7 @@ const eventsInfo = [
     description:
       "Make your dreams come true at Studio Keebli, a Keyboard Meet and Anime-themed convention with Artists, Keyboards, Vendors, and more!",
     location: "Price Center, 9500 Gilman Drive San Diego, CA 92093",
-    startTime: "2024-04-06T10:00:00-08:00",
+    startTime: "2024-04-06T11:00:00-08:00",
     endTime: "2024-04-06T13:00:00-08:00",
   }
 ];
