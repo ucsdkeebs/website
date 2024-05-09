@@ -41,7 +41,7 @@ const EventCard: React.FC<{ event: EventObject }> = ({ event }) => {
       <h2 className={styles.event_title}>{event.title}</h2>
       <p className={styles.event_date}><strong>Date:</strong> {formattedDateTimeRange}</p>
       <p className={styles.event_location}><strong>Location:</strong> {event.location}</p>
-      <p className={styles.event_description}>{event.description}</p>
+      {/* <p className={styles.event_description}>{event.description}</p> */}
     </div>
   );
 };

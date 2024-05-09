@@ -1,8 +1,6 @@
-.featured {
-  margin-bottom: 2rem;
-}
 .cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
   gap: 2rem;
 }

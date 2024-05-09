@@ -1,0 +1,18 @@
+.header_banner {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.header {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.raccoon_image {
+  align-self: flex-end;
+  margin: 0 auto;
+}

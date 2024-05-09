@@ -27,12 +27,10 @@ const featuredInfo = [
 
 const Featured: React.FC = () => {
   return (
-    <div className={styles.featured}>
-      <div className={styles.cards}>
-        {featuredInfo.map((activity) => (
-          <FeaturedCard key={activity.id} activity={activity} />
-        ))}
-      </div>
+    <div className={styles.cards}>
+      {featuredInfo.map((activity) => (
+        <FeaturedCard key={activity.id} activity={activity} />
+      ))}
     </div>
   );
 };

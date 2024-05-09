@@ -24,12 +24,10 @@ const eventsInfo = [
 
 const Events: React.FC = () => {
   return (
-    <div className={styles.events}>
-      <div className={styles.cards}>
+    <div className={styles.cards}>
       {eventsInfo.map((event) => (
           <EventCard key={event.id} event={event} />
         ))}
-      </div>
     </div>
   );
 };
