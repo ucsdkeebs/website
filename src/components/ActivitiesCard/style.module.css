@@ -11,12 +11,12 @@
 }
 
 .circle {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   color: black;
-  line-height: 50px;
+  line-height: 70px;
   text-align: center;
   background: #d9d9d9;
 }

@@ -1,4 +1,6 @@
 import ActivitiesCard from "@/components/ActivitiesCard";
+import Image from "next/image";
+import activitiesImage from "../../../public/assets/activities.jpeg";
 import styles from "./style.module.css";
 
 const activitiesInfo = [
@@ -55,13 +57,25 @@ const activitiesInfo = [
 const EventSchedule: React.FC = () => {
   return (
     <div className={styles.cards}>
-    <h2 className={styles.title}>Event Schedule</h2>
-    <div className={styles.slot}>
-      {activitiesInfo.map((activity) => (
-          <ActivitiesCard key={activity.id} activity={activity} />
-        ))}
-    </div>
-
+        <div className={styles.schedule}>
+            <h2 className={styles.title}>Event Schedule</h2>
+            <div className={styles.slot}>
+            {activitiesInfo.map((activity) => (
+                <ActivitiesCard key={activity.id} activity={activity} />
+                ))}
+            </div>
+        </div>
+        <div className={styles.activities}>
+            <h2 className={styles.title}>Activities</h2>
+            <Image
+                src={activitiesImage}
+                alt="Activity Image"
+                className={styles.activity_image}
+                width={200}
+                height={200}
+                quality={100}
+            />
+        </div>
     </div>
   );
 };

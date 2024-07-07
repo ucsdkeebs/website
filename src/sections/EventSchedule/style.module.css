@@ -3,20 +3,38 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    /* Placeholder styling*/
+    margin-bottom: 2rem;
 }
 
 .title {
-    padding-right: 4rem;
+    margin-bottom: 1rem;
+    text-align: center;
     font-weight: 500;
 }
 
-/* 
+.activity_image {
+    width: 100%;
+    height: auto;
+}
+
 @media screen and (min-width: 1024px) {
-    .slot {
+    /* .slot {
         display: flex;
         flex-direction: row;
         overflow-x: auto;
         max-width: 60%;
+    } */
+    .cards {
+        flex-direction: row;
+        justify-content: center;
+        gap: 8rem;
     }
 
-} */
+    .activity_image {
+        width: 550px;
+    }
+    .activities {
+        align-self: flex-start;
+    }
+}
