@@ -1,7 +1,8 @@
-import EventCard from "@/components/EventCard";
 import styles from "../../styles/EventPage.module.css";
 import TitleHeader from "@/components/TitleHeader";
 import Events from "../../sections/Events";
+import Footer from "@/components/Footer";
+
 export default function EventPage() {
   return (
     <>
