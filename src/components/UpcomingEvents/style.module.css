@@ -1,2 +1,61 @@
+.event_page {
+    
+}
 
+.events {
+    width: 300px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    text-align: left;
+  }
+  
+  .event_card {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    max-width: fit-content;
+    
+  }
+  
+  .event_image {
+    width: 9.563rem;
+    height: 9.449rem;
+    background-color: #e0e0e0;
+    margin-right: 20px;
+    border-radius: 10px;
+  }
+  
+  .event_details {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .event_details h3 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
+  .event_details p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 0.9em;
+  }
+  
+  .event_details span {
+    color: #4252CC;
+    font-size: 0.8em;
+    margin-top: auto;
+  }
+
+  .more_events {
+    text-align: right;
+    margin: 20px 20px 10px 0px;
+    color: blue;
+    text-decoration: underline;
+  }
   

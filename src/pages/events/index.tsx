@@ -2,22 +2,13 @@ import styles from "../../styles/EventPage.module.css";
 import TitleHeader from "@/components/TitleHeader";
 import Events from "../../sections/Events";
 import Footer from "@/components/Footer";
+import UpcomingEvents from "@/components/UpcomingEvents";
 
 export default function EventPage() {
   return (
     <>
       <main className={styles.Events}>
-        <br />
-        <h1 className={styles.title}>Upcoming Events</h1>
-        <br />
-            <div className={styles.cards}>
-                <Events />
-            </div>
-        <br />
-        <h1 className={styles.title}>Past Events</h1>
-            <div className={styles.cards}>
-                    <Events />
-            </div>
+        <UpcomingEvents />
       </main>
     </>
   );
