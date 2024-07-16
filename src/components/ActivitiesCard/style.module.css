@@ -21,6 +21,10 @@
   background: #d9d9d9;
 }
 
+.active {
+  background: var(--primary-light);
+}
+
 .line {
   position: relative;
   left: 50%;
@@ -40,4 +44,12 @@
 .activity_time {
   font-size: 0.8rem;
   color: #8c8c8c;
+}
+
+.tag {
+  width: 88%;
+  padding: 0.1rem;
+  font-size: 0.8rem;
+  background-color: var(--secondary-light);
+  border-radius: 4px;
 }
