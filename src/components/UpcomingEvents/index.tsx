@@ -50,9 +50,9 @@ const events = [
           </div>
         ))}
 
-        <p className={styles.more_events}>See More...</p>
+        <a href="http://localhost:3000/events" className={styles.more_events}>See More...</a>
       </div>
     );
   };
   
-  export default UpcomingEvents;
+  export default UpcomingEvents;  
