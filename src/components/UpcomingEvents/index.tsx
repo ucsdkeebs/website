@@ -7,6 +7,27 @@ const events = [
     { title: 'Love Is In The Keebs', date: '03 Feb 2023', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...' },
     { title: 'Studio Keebli', date: '03 Feb 2023', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...' }
   ];
+
+  // const events = [
+  //   {
+  //     id: "01",
+  //     title: "Winter Razer UTC Keyboard Meet",
+  //     description:
+  //       "Join us for the Winter Razer UTC Keyboard Meet on February 18, 2024, at 10:00 AM - an epic in-person gathering for keyboard enthusiasts!",
+  //     location: "Razer Store, 4373 La Jolla Village Drive #G2 San Diego, CA 92122",
+  //     startTime: "2024-02-18T10:00:00-08:00",
+  //     endTime: "2024-02-18T13:00:00-08:00",
+  //   },
+  //   {
+  //     id: "02",
+  //     title: "Studio Keebli: The Keyboard Meet of your Dreams",
+  //     description:
+  //       "Make your dreams come true at Studio Keebli, a Keyboard Meet and Anime-themed convention with Artists, Keyboards, Vendors, and more!",
+  //     location: "Price Center, 9500 Gilman Drive San Diego, CA 92093",
+  //     startTime: "2024-04-06T11:00:00-08:00",
+  //     endTime: "2024-04-06T13:00:00-08:00",
+  //   }
+  // ];
   
   const UpcomingEvents = () => {
     return (
@@ -55,4 +76,4 @@ const events = [
     );
   };
   
-  export default UpcomingEvents;  
+  export default UpcomingEvents;
