@@ -1,6 +1,7 @@
 import styles from "./style.module.css";
 import Image from "next/image";
 import eventImage from "../../../public/assets/event.png";
+import calendarIcon from "../AboutEvents/calendarIcon";
 
 const events = [
     { title: 'Winter GBM', date: '03 Feb 2023', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...' },
