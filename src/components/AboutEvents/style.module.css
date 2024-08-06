@@ -4,3 +4,97 @@
     display: flex;
     text-align: center;
   }
+
+/* Title and Details */
+.event_title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.event_info {
+  margin-bottom: 24px;
+}
+
+.info_item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  margin-left: 8px;
+  font-size: 25px;
+}
+
+.info_item svg {
+  margin-right: 8px;
+}
+
+.info_item span {
+  display: block;
+  font-size: 16px;
+  color: #333;
+  
+}
+
+.info_item .info_item_text {
+  display: flex;
+  align-items: left;
+  text-align: left;
+  flex-direction: column;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  margin-left: 8px;
+  font-size: 25px;
+}
+
+.info_item .info_item_text .title {
+  font-size: 25px;
+  margin-bottom: 2px;
+  color:#525151;
+}
+
+.info_item .info_item_text .under {
+  font-size: 15px;
+  color: #939393;
+  text-decoration: none;
+}
+
+
+
+/* About Event */
+.about_event {
+  margin-top: 24px;
+}
+
+.about_event h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  margin-left: 8px;
+}
+
+.about_event p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #555;
+  margin-left: 8px;
+}
+
+.about_event a {
+  font-size: 16px;
+  line-height: 1.5;
+  color: blue;
+  margin: 10px 0px 10px 8px;
+}
+
+.see_more {
+  display: block;
+  margin-top: 8px;
+  font-size: 16px;
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.see_more:hover {
+  text-decoration: underline;
+}
