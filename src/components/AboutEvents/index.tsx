@@ -3,7 +3,7 @@ import Image from "next/image";
 import eventImage from "../../../public/assets/event.png";
 import TitleHeader from "../TitleHeader";
 import React from 'react';
-import { title } from "process";
+import EventSchedule from "../EventSchedules";
 
 const events = [
     { title: 'Winter GBM', date: '03 Feb 2023', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...' },
@@ -74,7 +74,9 @@ const events = [
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> 
         <a href="#" className="see-more">See more...</a>
       </div>
-        </>
+
+      {/* <EventSchedule /> */}
+    </>
     );
   };
   
