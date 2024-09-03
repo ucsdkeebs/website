@@ -1,28 +1,39 @@
 .event_image {
-    width: 864px;
-    height: 486px;
-    display: flex;
+    width: 1200px;
+    height: 600px;
+    display: block; /* Change from flex to block to center using margin */
+    margin: 0 auto; /* Center the image */
     text-align: center;
+    border-radius: 20px;
   }
 
 /* Title and Details */
 .event_title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 16px;
-  line-height: 1.2;
+  flex: 1 1;
+  padding: 0.5rem;
+  font-size: 2rem;
+  font-weight: 500;
+  display: block; /* Change from flex to block to center using margin */
+  margin: 0 auto; /* Center the image */
+  text-align: center;
+  margin-right: 25%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .event_info {
   margin-bottom: 24px;
+  
 }
 
 .info_item {
   display: flex;
   align-items: center;
+  text-align: left;
   margin-bottom: 8px;
-  margin-left: 8px;
+  margin-left: 19%;
   font-size: 25px;
+  
 }
 
 .info_item svg {
@@ -64,6 +75,8 @@
 /* About Event */
 .about_event {
   margin-top: 24px;
+  margin-left: 19%;
+  text-align: left;
 }
 
 .about_event h3 {

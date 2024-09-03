@@ -19,8 +19,8 @@ const events = [
             alt="Event Placeholder"
             className={styles.event_image}
             />
-        <TitleHeader title="Event title #1 (long name long name long name)" />
-        <div className="event-details">
+        <div className={styles.event_title}>Event title #1 (long name long name long name) </div>
+        <div className={styles.event_details}>
           <div className={styles.info_item}>
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="40" height="40" rx="10" fill="#9F9F9F"/>
