@@ -3,7 +3,6 @@ import Events from "../sections/Events";
 import Featured from "../sections/Featured";
 import TitleHeader from "@/components/TitleHeader";
 import styles from "../styles/Home.module.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 export default function Home() {
   return (
