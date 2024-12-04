@@ -16,14 +16,18 @@ body {
   overflow-x: hidden;
   font-family: "Libre Franklin", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  background-color: var(--white);
+}
+
+button,
+input,
+select,
+label {
+  font-family: "Libre Franklin", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 1.125rem;
   font-weight: 400;
   letter-spacing: -0.034rem;
-}
-
-button, input, select, label {
-  font-family: "Libre Franklin", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 h1,
@@ -31,11 +35,6 @@ h2,
 h3,
 p {
   margin: 0px;
-}
-
-p {
-  font-size: 1.2rem;
-  font-weight: 300;
 }
 
 :root {
@@ -49,34 +48,48 @@ p {
   --success: #79cf87;
   --warning: #cf7979;
   --grey: #afbfc9;
-  
+
   /* New colors */
-  --yellow: #F4D48E;
-  --orange: #F1A863;
-  --cyan: #53B29B;
-  --blue: #5B83CA;
+  --yellow: #f4d48e;
+  --orange: #f1a863;
+  --cyan: #53b29b;
+  --blue: #5b83ca;
+  --dark-blue: #284a87;
   --black: #393939;
-  --white: #FFFAFA;
+  --white: #fffafa;
 }
 
 /* Typography */
 h1 {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 3rem;
   font-weight: 700;
   letter-spacing: -0.09rem;
 }
 
 h2 {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 2.25rem;
   font-weight: 600;
   letter-spacing: -0.068rem;
 }
 
 h3 {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 1.5rem;
   font-weight: 500;
   letter-spacing: -0.045rem;
+}
+
+p {
+  font-size: 1.125rem;
+  font-weight: 400;
+  letter-spacing: -0.034rem;
+}
+
+@media screen and (max-width: 1024px) {
+  html,
+  body {
+    font-size: 80%;
+  }
 }
