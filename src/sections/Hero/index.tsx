@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
           className={styles.officerImage}
           src="/assets/keebs_officers.png"
           fill
-          objectFit="cover"
+          style={{ objectFit: "cover" }}
           alt="Keebs Officers"
         />
       </div>

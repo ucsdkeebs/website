@@ -18,8 +18,8 @@ const FeaturedCard: React.FC<{ activity: FeaturedCardProps }> = ({
           className={styles.logoImage}
           src={activity.image}
           fill
-          objectFit="contain"
           alt="Activity Image"
+          style={{objectFit: "contain"}}
         />
       </div>
       <div className={styles.blurb}>

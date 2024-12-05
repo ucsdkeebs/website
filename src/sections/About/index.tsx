@@ -11,7 +11,7 @@ const About: React.FC = () => {
             className={styles.logoImage}
             src="/assets/logo.png"
             fill
-            objectFit="contain"
+            style={{ objectFit: "contain" }}
             alt="UCSD Keebs Logo"
           />
         </div>
@@ -48,7 +48,7 @@ const About: React.FC = () => {
             className={styles.logoImage}
             src="/assets/keyboardlogo.png"
             fill
-            objectFit="contain"
+            style={{ objectFit: "contain" }}
             alt="Keyboard Logo"
           />
         </div>

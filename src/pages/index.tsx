@@ -1,7 +1,7 @@
 import Hero from "../sections/Hero";
 import About from "../sections/About";
 import Featured from "../sections/Featured";
-import TitleHeader from "@/components/TitleHeader";
+import Sponsors from "../sections/Sponsors";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -10,6 +10,7 @@ export default function Home() {
       <Hero />
       <About />
       <Featured />
+      <Sponsors/>
     </main>
   );
 }
