@@ -1,10 +1,20 @@
 .footer {
+    padding: 1rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 10vh;
-    padding: 0rem 2rem;
-    background: var(--primary-light);
-  }
-  
-  
+    background-color: var(--primary-light);
+    flex-direction: column;
+}
+
+.iconDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon {
+    padding: 0.5rem;
+    width: 60px;
+    height: auto;
+}
