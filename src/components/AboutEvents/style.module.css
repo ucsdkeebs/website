@@ -1,6 +1,6 @@
 .event_image {
-    width: 1200px;
-    height: 600px;
+    width:80%;
+    height: auto;
     display: block; /* Change from flex to block to center using margin */
     margin: 0 auto; /* Center the image */
     text-align: center;
@@ -9,16 +9,13 @@
 
 /* Title and Details */
 .event_title {
-  flex: 1 1;
-  padding: 0.5rem;
+  display: flex; /* Use flexbox for alignment */
+  justify-content: flex-start; /* Horizontally center the content */
+  align-items: center; /* Vertically center if needed */
+  padding: 1.5rem 0 0 10%; /* Keep padding for spacing inside */
   font-size: 2rem;
-  font-weight: 500;
-  display: block; /* Change from flex to block to center using margin */
-  margin: 0 auto; /* Center the image */
-  text-align: center;
-  margin-right: 25%;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  font-weight: bold;
+  text-align: left;
 }
 
 .event_info {
@@ -30,9 +27,8 @@
   display: flex;
   align-items: center;
   text-align: left;
-  margin-bottom: 8px;
-  margin-left: 19%;
-  font-size: 25px;
+  padding-left: 15%;
+  font-size: 1.5625rem;;
   
 }
 
@@ -52,9 +48,7 @@
   align-items: left;
   text-align: left;
   flex-direction: column;
-  margin-bottom: 8px;
-  margin-top: 8px;
-  margin-left: 8px;
+  padding: 0.5rem 0.5rem 0.5rem;
   font-size: 25px;
 }
 
@@ -74,16 +68,19 @@
 
 /* About Event */
 .about_event {
-  margin-top: 24px;
-  margin-left: 19%;
-  text-align: left;
+  display: flex; /* Flexbox to control layout */
+  flex-direction: column; /* Ensure content stacks vertically */
+  align-items: center; /* Align content to the left */
+  gap: 0.5rem; /* Space between elements (24px equivalent) */
+  text-align: center;
+
 }
 
 .about_event h3 {
-  font-size: 20px;
+  font-size: 1.5625rem;
   font-weight: bold;
-  margin-bottom: 8px;
-  margin-left: 8px;
+  padding-left: .5rem; /* Add space inside the element instead of shifting it */
+  margin-bottom: 0.5rem; /* Consistent bottom spacing */
 }
 
 .about_event p {
