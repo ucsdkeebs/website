@@ -1,0 +1,110 @@
+.event_image {
+    width:80%;
+    height: auto;
+    display: block; /* Change from flex to block to center using margin */
+    margin: 0 auto; /* Center the image */
+    text-align: center;
+    border-radius: 20px;
+  }
+
+/* Title and Details */
+.event_title {
+  display: flex; /* Use flexbox for alignment */
+  justify-content: flex-start; /* Horizontally center the content */
+  align-items: center; /* Vertically center if needed */
+  padding: 1.5rem 0 0 10%; /* Keep padding for spacing inside */
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: left;
+}
+
+.event_info {
+  margin-bottom: 24px;
+  
+}
+
+.info_item {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding-left: 15%;
+  font-size: 1.5625rem;;
+  
+}
+
+.info_item svg {
+  margin-right: 8px;
+}
+
+.info_item span {
+  display: block;
+  font-size: 16px;
+  color: #333;
+  
+}
+
+.info_item .info_item_text {
+  display: flex;
+  align-items: left;
+  text-align: left;
+  flex-direction: column;
+  padding: 0.5rem 0.5rem 0.5rem;
+  font-size: 25px;
+}
+
+.info_item .info_item_text .title {
+  font-size: 25px;
+  margin-bottom: 2px;
+  color:#525151;
+}
+
+.info_item .info_item_text .under {
+  font-size: 15px;
+  color: #939393;
+  text-decoration: none;
+}
+
+
+
+/* About Event */
+.about_event {
+  display: flex; /* Flexbox to control layout */
+  flex-direction: column; /* Ensure content stacks vertically */
+  align-items: center; /* Align content to the left */
+  gap: 0.5rem; /* Space between elements (24px equivalent) */
+  text-align: center;
+
+}
+
+.about_event h3 {
+  font-size: 1.5625rem;
+  font-weight: bold;
+  padding-left: .5rem; /* Add space inside the element instead of shifting it */
+  margin-bottom: 0.5rem; /* Consistent bottom spacing */
+}
+
+.about_event p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #555;
+  margin-left: 8px;
+}
+
+.about_event a {
+  font-size: 16px;
+  line-height: 1.5;
+  color: blue;
+  margin: 10px 0px 10px 8px;
+}
+
+.see_more {
+  display: block;
+  margin-top: 8px;
+  font-size: 16px;
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.see_more:hover {
+  text-decoration: underline;
+}
