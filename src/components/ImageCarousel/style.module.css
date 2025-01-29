@@ -1,0 +1,29 @@
+.carouselContainer {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+  }
+  
+  .carouselTrack {
+    display: flex;
+    gap: 5rem;
+    animation: scroll 120s linear infinite;
+    height: 100%;
+  }
+  
+  .carouselSlide {
+    min-width: 200px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }

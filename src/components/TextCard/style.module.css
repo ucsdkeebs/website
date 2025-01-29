@@ -1,0 +1,35 @@
+.textCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.5rem;
+
+  --title-color: var(--yellow);
+  --body-color: var(--white);
+  --button-bg: var(--yellow);
+  --button-border: transparent;
+}
+
+.secondary {
+  --title-color: var(--black);
+  --body-color: var(--black);
+  --button-bg: var(--white);
+  --button-border: var(--black);
+}
+
+.title {
+  color: var(--title-color);
+}
+
+.body {
+  color: var(--body-color);
+  white-space: pre-line;
+}
+
+.button {
+  padding: 9px 32px;
+  border-radius: 30px;
+  background-color: var(--button-bg);
+  border-color: var(--button-border);
+  font-weight: 600;
+}
