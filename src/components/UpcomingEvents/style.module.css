@@ -1,126 +1,53 @@
-.event_page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  gap: 1rem;
+.events_section {
+background-color: #5072ad;
+display: flex;
+flex-direction: column;
+gap: 1.25rem;
 }
 
-.eventHeader {
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-    text-align: left;
-  }
-  
-  .event_card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    height: auto;
-    width: auto;
-    max-width: 42rem;
-    box-sizing: border-box;
-  }
-  
-  .event_image {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    background-color: #e0e0e0;
-    border-radius: 10px;
-  }
-  
-  .event_details {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    padding: 20px;
-    width: 100%; /* Ensure it takes the full width of the card */
-    flex-grow: 1; /* Allow the details section to grow and fill available space */
-    box-sizing: border-box; /* Include padding in the width calculation */
-    margin: 0; /* Reset margin to keep content inside the box */
-    overflow: hidden; /* Add scroll if the content overflows */
-  }
-  
-  .event_details h3 {
-    margin: 0;
-    font-size: 1.2rem;
-  }
-  
-  .event_details p {
-    margin: 5px 0;
-    color: #666;
-    font-size: 0.9rem;
-  }
-  
-  .event_details span {
-    color: #4252CC;
-    font-size: 0.8rem;
-    margin-top: auto;
-  }
+.event_text {
+  text-align: left;
+  width: 55%;
+  padding: 4rem 0rem 0rem 5rem;
+}
 
-  .more_events {
-    text-align: right;
-    margin: 20px 20px 10px 0px;
-    color: blue;
-    text-decoration: underline;
-  
-  }
+.events {
+  color: #F4D48E;
+  margin-bottom: 1.5rem;
+}
 
-  @media (max-width: 480px) {
-    .events {
-      width: 300px;
-      margin: 20px;
-      font-family: Arial, sans-serif;
-      text-align: left;
-    }
-    
-    .event_card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 10px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      background-color: #f9f9f9;
-      width: 100%; /* Make the card fit the screen width */
-      max-width: 100%; /* Limit the width to the screen */
-      box-sizing: border-box;
-    }
-    
-    .event_image {
-      width: 100%; /* Make image responsive */
-      height: auto; /* Adjust height based on width */
-      background-color: #e0e0e0;
-      border-radius: 10px;
-      margin-right: 0; /* Remove margin for alignment */
-    }
-    
-    .event_details {
-      padding: 10px; /* Reduce padding for small screens */
-      width: 100%; /* Ensure it takes the full width of the card */
-      box-sizing: border-box;
-      margin: 0;
-    }
-  
-    .event_details h3 {
-      font-size: 1.1em; /* Adjust font size for mobile */
-    }
-  
-    .event_details p {
-      font-size: 0.8em; /* Adjust font size for mobile */
-    }
-  
-    .more_events {
-      text-align: center; /* Center align for better accessibility */
-      margin: 10px 0; /* Adjust margins */
-      font-size: 0.9em; /* Adjust font size */
-    }
-  }
-  
+.events_description {
+  color: white;
+}
+
+.image_section {
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: space-around;
+}
+
+
+.arrow_left {
+  transform: scaleX(-1);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.arrow_right {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.images {
+  max-width: 20rem; /* Adjust to make images smaller */
+  width: 100%; /* Makes sure they scale down */
+  height: auto; /* Keeps aspect ratio */
+  border-radius: 20px;
+  margin: 0.5rem;
+}
+
