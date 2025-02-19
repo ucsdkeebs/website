@@ -1,0 +1,16 @@
+.button {
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.primary {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.secondary {
+  background-color: var(--white);
+  color: var(--black);
+  border: 1px solid var(--black);
+}

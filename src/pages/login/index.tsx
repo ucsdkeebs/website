@@ -1,24 +1,30 @@
-import Link from "next/link";
-import styles from "../../styles/Login.module.css";
+import Button from "@/components/Button";
+import Image from "next/image";
+import Logo from "../../../public/assets/logo.png";
+import styles from "./style.module.css";
 
 export default function Login() {
   return (
-  <main className={styles.main}>
-    <div className={styles.popup}>
-      <h1 className={styles.header}>Sign Up</h1>
-      <p>We <strong>require</strong> a discord account for the account sign-up. Please make one and join our discord if you haven’t yet!</p>
-      <form className={styles.signup_form}>
-        <label className={styles.label}>Email</label>
-        <input type="text" className={styles.input_box}></input>
-        <label className={styles.label}>UCSD Student?</label>
-        <select className={styles.select}>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </form>
-      <Link className={styles.button} href='/'>Sign up with Discord</Link>
-    </div>
-  </main>
-  )
-  ;
+    <main className={styles.main}>
+      <div className={styles.popup}>
+        <Image className={styles.logo} width={80} height={80} src={Logo} alt="Keebs Logo"/>
+        <h1>Welcome!</h1>
+        <p>
+          If you are new, sign up with your UCSD email. For returning users, log
+          in to get started
+        </p>
+        {/* Go to google sign in page */}
+        <Button href="/">Sign in</Button>
+        <div className={styles.loginDivider}>
+          <hr className={styles.divider} />
+          <p className={styles.or}>or</p>
+          <hr className={styles.divider} />
+        </div>
+        {/* Go to sign up page */}
+        <Button variant="secondary" href="/register">
+          Sign up with UCSD email
+        </Button>
+      </div>
+    </main>
+  );
 }

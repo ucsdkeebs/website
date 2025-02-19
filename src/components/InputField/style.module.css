@@ -1,0 +1,14 @@
+.inputContainer {
+  width: 100%;
+}
+.input, .select {
+  border-radius: 8px;
+  border: 1px solid var(--black);
+  width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+.placeholder {
+    color: var(--light-grey);
+}

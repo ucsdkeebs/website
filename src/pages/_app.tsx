@@ -5,9 +5,11 @@ import Footer from "@/components/Footer";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div>
+    <div className="page_container">
       <Navbar />
-      <Component {...pageProps} />
+      <main className="main_content">
+        <Component {...pageProps} />
+      </main>
       <Footer />
     </div>
   );
