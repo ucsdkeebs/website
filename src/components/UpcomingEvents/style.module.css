@@ -1,0 +1,53 @@
+.events_section {
+background-color: #5072ad;
+display: flex;
+flex-direction: column;
+gap: 1.25rem;
+}
+
+.event_text {
+  text-align: left;
+  width: 55%;
+  padding: 4rem 0rem 0rem 5rem;
+}
+
+.events {
+  color: #F4D48E;
+  margin-bottom: 1.5rem;
+}
+
+.events_description {
+  color: white;
+}
+
+.image_section {
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: space-around;
+}
+
+
+.arrow_left {
+  transform: scaleX(-1);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.arrow_right {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.images {
+  max-width: 20rem; /* Adjust to make images smaller */
+  width: 100%; /* Makes sure they scale down */
+  height: auto; /* Keeps aspect ratio */
+  border-radius: 20px;
+  margin: 0.5rem;
+}
+

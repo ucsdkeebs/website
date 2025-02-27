@@ -3,14 +3,22 @@ import About from "../sections/About";
 import Featured from "../sections/Featured";
 import Sponsors from "../sections/Sponsors";
 import styles from "../styles/Home.module.css";
+import TitleHeader from "@/components/TitleHeader";
+import Events from "@/sections/Events";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <Hero />
-      <About />
-      <Featured />
-      <Sponsors/>
-    </main>
+    <>
+      <main className={styles.main}>
+        <TitleHeader title="About Us" />
+        <About />
+        <TitleHeader title="Upcoming Events" />
+        <Events />
+        <TitleHeader title="Featured Club Activities" />
+        <Featured />
+      </main>
+
+      
+    </>
   );
 }
