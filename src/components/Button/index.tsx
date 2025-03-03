@@ -3,7 +3,7 @@ import styles from "./style.module.css";
 
 interface ButtonProps {
   variant?: "primary" | "secondary";
-  href?: string;  // Make href optional
+  href?: string;
   className?: string;
   children: React.ReactNode;
   onClick?: () => void;
