@@ -1,27 +1,30 @@
 import styles from "./style.module.css";
+import Link from "next/link";
 
 interface TextCardProps {
   title: string;
   body: string;
-  buttonText: string;
+  buttonText?: string;
+  buttonHref?: string;
   variant?: "primary" | "secondary";
-  onButtonClick?: () => void;
 }
 
 const TextCard: React.FC<TextCardProps> = ({
   title,
   body,
   buttonText,
+  buttonHref,
   variant = "primary",
-  onButtonClick,
 }) => {
   return (
     <div className={`${styles.textCard} ${styles[variant]}`}>
       <h1 className={styles.title}>{title}</h1>
       <h3 className={styles.body}>{body}</h3>
-      <button className={styles.button} onClick={onButtonClick}>
-        {buttonText}
-      </button>
+      {buttonText && buttonHref && (
+        <Link href={buttonHref} className={styles.buttonLink}>
+          {buttonText}
+        </Link>
+      )}
     </div>
   );
 };

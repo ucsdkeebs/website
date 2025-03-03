@@ -7,6 +7,9 @@
   padding: 0 2rem;
   height: 4.4rem;
   background-color: #284a87; 
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .navcontainer {
@@ -157,6 +160,7 @@
     transform: translateX(-100%);
     transition: transform 0.3s ease;
     box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 2;
   }
 
   .navlinks.show {

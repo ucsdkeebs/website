@@ -5,7 +5,7 @@ import TitleHeader from "@/components/TitleHeader";
 
 const Footer: React.FC = () => {
   return (
-    <div className={styles.footer}>
+    <div className={styles.footer} id="contact">
         <TitleHeader title="Stay Connected!" />
     </div>
   );

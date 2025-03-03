@@ -12,6 +12,7 @@ const Hero: React.FC = () => {
           in North America. We’re a diverse and inclusive community of students
           bound by our love for mechanical keyboards."
           buttonText="Join Us"
+          buttonHref="/login"
         />
       </div>
       <div className={styles.imageContainer}>
