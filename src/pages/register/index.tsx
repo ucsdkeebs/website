@@ -22,6 +22,7 @@ export default function Register() {
   const onSubmit = (data: FormData) => {
     console.log("Form submitted:", data);
   };
+
   return (
     <main className={styles.main}>
       <div className={styles.popup}>
@@ -75,8 +76,6 @@ export default function Register() {
               { value: "fifth", label: "Fifth+" },
             ]}
           />
-
-          {/* Submit Button */}
           <Button variant="primary" href="#" className={styles.submitButton}>
             Submit
           </Button>

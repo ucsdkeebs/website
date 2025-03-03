@@ -3,9 +3,10 @@ import styles from "./style.module.css";
 
 interface ButtonProps {
   variant?: "primary" | "secondary";
-  href: string;
+  href?: string;  // Make href optional
   className?: string;
   children: React.ReactNode;
+  onClick?: () => void;
 }
 
 const Button = ({
@@ -13,14 +14,18 @@ const Button = ({
   href,
   className = "",
   children,
+  onClick,
 }: ButtonProps) => {
-  return (
-    <Link
-      className={`${styles.button} ${styles[variant]} ${className}`}
-      href={href}
-    >
+  const buttonClass = `${styles.button} ${styles[variant]} ${className}`;
+
+  return href ? (
+    <Link className={buttonClass} href={href} onClick={onClick}>
       {children}
     </Link>
+  ) : (
+    <button className={buttonClass} onClick={onClick}>
+      {children}
+    </button>
   );
 };
 
