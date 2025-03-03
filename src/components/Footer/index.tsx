@@ -9,27 +9,6 @@ import LinkedIn from "../../../public/assets/linkedin.svg";
 const Footer: React.FC = () => {
   return (
     <div className={styles.footer}>
-      <div className={styles.navlinks}>
-        <p>Keyboard Club</p>
-        <Link href="/about" className={styles.link}>
-          About Us
-        </Link>
-        <Link href="/events" className={styles.link}>
-          Events
-        </Link>
-        <Link href="/shop" className={styles.link}>
-          Shop
-        </Link>
-        <Link href="/sponsors" className={styles.link}>
-          Sponsors
-        </Link>
-        <Link href="/socials" className={styles.link}>
-          Socials
-        </Link>
-        <Link href="/recruitment" className={styles.link}>
-          Recruitment
-        </Link>
-      </div>
       <div className={styles.contactInfo}>
         <h3>Contact Us</h3>
         <div className={styles.iconDiv}>
