@@ -1,8 +1,12 @@
 import Button from "@/components/Button";
 import InputField from "@/components/InputField";
+import Dropdown from "@/components/Dropdown";
+import Link from "next/link";
 import Image from "next/image";
 import Raccoon from "../../../public/assets/sleep_raccoon.png";
-import { useForm } from "react-hook-form";
+import BackArrow from "../../../public/assets/icons/back-arrow.svg";
+import majors from "@/lib/constants/majors";
+import { useForm, Controller } from "react-hook-form";
 import styles from "./style.module.css";
 
 interface FormData {
@@ -12,12 +16,26 @@ interface FormData {
   year: string;
 }
 
-export default function Register() {
+interface RegisterProps {
+  collegeStudent?: boolean;
+}
+
+const genders = ["She/her", "He/him", "They/them", "Other"];
+const years = ["First", "Second", "Third", "Fourth", "Fifth+"];
+
+export default function Register({ collegeStudent = false }: RegisterProps) {
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormData>({
+    defaultValues: {
+      gender: "",
+      year: "",
+      major: "",
+    },
+  });
 
   const onSubmit = (data: FormData) => {
     console.log("Form submitted:", data);
@@ -26,13 +44,15 @@ export default function Register() {
   return (
     <main className={styles.main}>
       <div className={styles.popup}>
+        <Link href="/login" className={styles.backArrow}>
+          <BackArrow />
+        </Link>
         <div className={styles.logoContainer}>
           <Image
             className={styles.logo}
             src={Raccoon}
             alt="Raccoon Logo"
             fill
-            objectFit="contain"
           />
         </div>
         <h1>New User</h1>
@@ -44,40 +64,54 @@ export default function Register() {
             error={errors.username?.message}
             placeholder="Username"
           />
-          <InputField
-            name="major"
-            register={register}
-            error={errors.major?.message}
-            placeholder="Major"
-          />
-          <InputField
-            name="gender"
-            type="select"
-            register={register}
-            error={errors.gender?.message}
-            placeholder="Gender"
-            options={[
-              { value: "male", label: "Male" },
-              { value: "female", label: "Female" },
-              { value: "other", label: "Other" },
-            ]}
-          />
-          <InputField
+          {collegeStudent && (
+            <>
+              <Controller
+                name="major"
+                control={control}
+                render={({ field }) => (
+                  <Dropdown
+                    name="majorOptions"
+                    options={majors}
+                    value={field.value}
+                    onChange={field.onChange}
+                    className={styles.dropdown}
+                    placeholder="Major"
+                  />
+                )}
+              />
+              <Controller
+                name="year"
+                control={control}
+                render={({ field }) => (
+                  <Dropdown
+                    name="yearOptions"
+                    options={years}
+                    value={field.value}
+                    onChange={field.onChange}
+                    className={styles.dropdown}
+                    placeholder="Year"
+                  />
+                )}
+              />
+            </>
+          )}
+          <Controller
             name="year"
-            type="select"
-            register={register}
-            error={errors.year?.message}
-            placeholder="Year"
-            options={[
-              { value: "first", label: "First" },
-              { value: "second", label: "Second" },
-              { value: "third", label: "Third" },
-              { value: "fourth", label: "Fourth" },
-              { value: "fifth", label: "Fifth+" },
-            ]}
+            control={control}
+            render={({ field }) => (
+              <Dropdown
+                name="yearOptions"
+                options={years}
+                value={field.value}
+                onChange={field.onChange}
+                className={styles.dropdown}
+                placeholder="Year"
+              />
+            )}
           />
           <Button variant="primary" href="#" className={styles.submitButton}>
-            Submit
+            Sign Up
           </Button>
         </form>
       </div>

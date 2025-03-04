@@ -19,7 +19,7 @@ const Button = ({
   const buttonClass = `${styles.button} ${styles[variant]} ${className}`;
 
   return href ? (
-    <Link className={buttonClass} href={href} onClick={onClick}>
+    <Link className={buttonClass} href={href}>
       {children}
     </Link>
   ) : (

@@ -24,12 +24,23 @@
 }
 
 .logoContainer {
-   position: relative;
-   height: 110px;
+  position: relative;
+  display: flex;
+  height: 110px;
+}
+
+.backArrow {
+  display: flex;
+  align-items: flex-start;
+  width: min-content;
+}
+
+.logo {
+  object-fit: contain;
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }

@@ -1,10 +1,9 @@
 import DropdownArrow from "../../../public/assets/icons/dropdown-arrow.svg";
 import { ReactNode, useEffect, useState } from "react";
-import styles from "./style.module.scss";
+import styles from "./style.module.css";
 
 interface DropdownProps {
   name: string;
-  ariaLabel: string;
   options: string[];
   value: string;
   onChange: (value: string) => void;
@@ -15,7 +14,6 @@ interface DropdownProps {
 
 const Dropdown = ({
   name,
-  ariaLabel,
   options,
   value,
   onChange,
@@ -67,16 +65,12 @@ const Dropdown = ({
         setOpen(true);
       }}
     >
-      <label htmlFor={name}>
-        <p>{ariaLabel}</p>
-      </label>
       <div className={styles.selector}>
         <select
           name={name}
           id={name}
           value={value}
           onChange={(e) => onChange(e.currentTarget.value)}
-          aria-label={ariaLabel}
           disabled={readOnly}
         >
           {placeholder && (
@@ -92,9 +86,7 @@ const Dropdown = ({
         </select>
         <DropdownArrow className={styles.arrow} aria-hidden />
       </div>
-      <div className={`${styles.contents} ${open ? "" : styles.closed}`}>
-        {optionButtons}
-      </div>
+      <div className={`${styles.contents} ${open ? "" : styles.closed}`}>{optionButtons}</div>
     </div>
   );
 };
