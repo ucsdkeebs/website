@@ -18,11 +18,11 @@ const Navbar: React.FC = () => {
       <div className={styles.navcontainer}>
         <div className={`${styles.navlinks} ${isMenuOpen ? styles.show : ""}`}>
           <Link href="/" className={styles.logolink2}><Image className={styles.logo} src={logo} alt="logo"/></Link>
-          <Link href="#about" className={styles.link} onClick={()=> setIsMenuOpen(!isMenuOpen)}>About</Link>
-          <Link href="#events" className={styles.link} onClick={()=> setIsMenuOpen(!isMenuOpen)}>Events</Link>
-          <Link href="#involved" className={styles.link} onClick={()=> setIsMenuOpen(!isMenuOpen)}>Get Involved</Link>
-          <Link href="#sponsors" className={styles.link} onClick={()=> setIsMenuOpen(!isMenuOpen)}>Sponsors</Link>
-          <Link href="#contact" className={styles.link} onClick={()=> setIsMenuOpen(!isMenuOpen)}>Contact</Link>
+          <Link href="/#about" className={styles.link} onClick={()=> setIsMenuOpen(!isMenuOpen)}>About</Link>
+          <Link href="/#events" className={styles.link} onClick={()=> setIsMenuOpen(!isMenuOpen)}>Events</Link>
+          <Link href="/#involved" className={styles.link} onClick={()=> setIsMenuOpen(!isMenuOpen)}>Get Involved</Link>
+          <Link href="/#sponsors" className={styles.link} onClick={()=> setIsMenuOpen(!isMenuOpen)}>Sponsors</Link>
+          <Link href="/#contact" className={styles.link} onClick={()=> setIsMenuOpen(!isMenuOpen)}>Contact</Link>
           <Link href="/login" className={`${styles.button} ${styles.button2}`}>Join</Link>
         </div>
         <Link href="/login" className={styles.button}>Join</Link>
