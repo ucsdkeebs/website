@@ -11,6 +11,17 @@
   height: auto;
 }
 
+.profileContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile {
+  width: 40px;
+  height: auto;
+}
+
 .button {
   background: var(--secondary);
   color: var(--primary-dark);

@@ -1,13 +1,17 @@
 import Button from "@/components/Button";
 import Image from "next/image";
 import Logo from "../../../public/assets/logo.png";
-import { useState } from "react";
+import { UserAPI } from "@/lib/api";
 import { auth, provider } from "@/lib/firebaseConfig";
 import { signInWithPopup } from "firebase/auth";
+import { setCookie } from "cookies-next/client";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import styles from "./style.module.css";
 
 export default function Login() {
   const [errorMessage, setErrorMessage] = useState("");
+  const router = useRouter();
 
   const handleGoogleLogin = async () => {
     try {
@@ -16,6 +20,18 @@ export default function Login() {
       console.log("User logged in with Google:", user);
       // Make api call to check if user is in database and add them if not
       // if new user go to register page
+      const userToken = await user.getIdToken();
+      const checkUser = await UserAPI.login(userToken);
+
+      setCookie("ACCESS_TOKEN", userToken);
+
+      if (checkUser == "/register") {
+        setCookie("USER", user);
+        router.push("/register");
+      } else {
+        setCookie("USER", checkUser);
+        router.push("/");
+      }
     } catch (error: any) {
       setErrorMessage("Failed to log in with Google");
     }
@@ -33,20 +49,10 @@ export default function Login() {
         />
         <h1>Welcome!</h1>
         <p>
-          If you are new, sign up with your UCSD email. For returning users, log
-          in to get started
+          If you are new, sign in with your UCSD email and fill out the new user
+          information. For returning users, log in to get started!
         </p>
-        {/* Go to google sign in page */}
         <Button onClick={handleGoogleLogin}>Sign in</Button>
-        <div className={styles.loginDivider}>
-          <hr className={styles.divider} />
-          <p className={styles.or}>or</p>
-          <hr className={styles.divider} />
-        </div>
-        {/* Go to sign up page */}
-        <Button variant="secondary" href="/register">
-          Sign up with UCSD email
-        </Button>
       </div>
     </main>
   );

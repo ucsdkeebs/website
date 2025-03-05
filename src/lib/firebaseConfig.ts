@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApp, getApps } from "firebase/app";
 import {
   getAuth,
   GoogleAuthProvider,
@@ -6,6 +6,7 @@ import {
   browserLocalPersistence,
 } from "firebase/auth";
 
+// Firebase config
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY as string,
   authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN as string,
@@ -16,8 +17,8 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID as string,
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// Initialize Firebase app (only if not already initialized)
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();

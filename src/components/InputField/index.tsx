@@ -3,39 +3,28 @@ import styles from "./style.module.css";
 
 interface InputFieldProps {
   name: string;
-  type?: "text" | "select";
-  options?: { value: string; label: string }[];
   register: UseFormRegister<any>;
   error?: string;
   placeholder: string;
+  required?: boolean;
 }
 
 const InputField = ({
   name,
-  type = "text",
-  options,
   register,
   error,
   placeholder,
+  required = false,
 }: InputFieldProps) => {
   return (
     <div className={styles.inputContainer}>
-      {type === "select" ? (
-        <select {...register(name)} className={styles.select}>
-          <option className={styles.placeholder} value="">{placeholder}</option>
-          {options?.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      ) : (
-        <input
-          {...register(name)}
-          className={styles.input}
-          placeholder={placeholder}
-        />
-      )}
+      <input
+        {...register(name, {
+          required: required ? `${placeholder} is required` : false,
+        })}
+        className={styles.input}
+        placeholder={placeholder}
+      />
       {error && <span className={styles.error}>{error}</span>}
     </div>
   );

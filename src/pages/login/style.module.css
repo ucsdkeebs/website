@@ -22,19 +22,3 @@
 .logo {
   margin: 0 auto;
 }
-
-.loginDivider {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.or {
-  color: var(--light-grey);
-}
-
-.divider {
-  border: 1px solid var(--light-grey);
-  width: 50%;
-  height: 0px;
-}
