@@ -8,6 +8,10 @@ const config = {
         getUser: "/users/get-users",
         deleteUser: "/users/delete-user",
       },
+      event: {
+        createEvent: "/events/create",
+        getEvents: "/events/all"
+      }
     },
   },
 };

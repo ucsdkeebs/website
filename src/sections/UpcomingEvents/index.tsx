@@ -1,22 +1,22 @@
 import EventCard from "@/components/EventCard";
+import { EventObject } from "@/lib/types/enum";
 import styles from "./style.module.css";
 
-const exampleEvent = {
-    id: "1",
-    title: "Spring GBM",
-    description:
-      "Join us for our biggest event of the quarter! Try out new mechanical keyboards, meet other enthusiasts, and learn from the experts. Whether you're new to the hobby or a seasoned collector, there's something for everyone!",
-    location: "Main Conference Hall, Keebs HQ",
-    startTime: "2025-04-10T14:00:00Z",
-    endTime: "2025-04-10T18:00:00Z",
-  };
+interface UpcomingEventsProps {
+  events: EventObject[];
+}
 
-const UpcomingEvents: React.FC = () => {
+const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events }) => {
+    console.log(events)
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Upcoming Events</h1>
       <div className={styles.eventContainer}>
-      <EventCard event={exampleEvent} />
+        {events.length > 0 ? (
+          events.map((event) => <EventCard key={event.id} event={event} />)
+        ) : (
+          <p>No upcoming events available.</p>
+        )}
       </div>
     </div>
   );

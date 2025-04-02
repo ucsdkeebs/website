@@ -8,7 +8,6 @@ export interface PublicProfile {
   major?: string;
 }
 
-
 export interface CreateUserResponse {
   user: PublicProfile;
 }
