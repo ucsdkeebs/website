@@ -51,7 +51,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             About
           </Link>
           <Link
-            href="/#events"
+            href="/events"
             className={styles.link}
             onClick={() => setIsMenuOpen(false)}
           >

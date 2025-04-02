@@ -27,7 +27,7 @@ const About: React.FC = () => {
           />
         </div>
       </div>
-      <div className={styles.whatSection} id="events">
+      <div className={styles.whatSection}>
         <div className={styles.blurb}>
           <TextCard
             title="What we do"
