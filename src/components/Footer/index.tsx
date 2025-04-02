@@ -16,25 +16,25 @@ const Footer: React.FC = () => {
             href="https://www.instagram.com/ucsdkeebs"
             className={styles.link}
           >
-            <Image className={styles.icon} src={Instagram} alt="Instagram" />
+            <Instagram className={styles.icon} />
             <p>Instagram</p>
           </Link>
           <Link href="https://discord.gg/KPVSVhPD" className={styles.link}>
-            <Image className={styles.icon} src={Discord} alt="Discord" />
+            <Discord className={styles.icon} />
             <p>Discord</p>
           </Link>
           <Link
             href="https://www.tiktok.com/@ucsdkeebs"
             className={styles.link}
           >
-            <Image className={styles.icon} src={Tiktok} alt="Tiktok" />
+            <Tiktok className={styles.icon} />
             <p>Tiktok</p>
           </Link>
           <Link
             href="https://www.linkedin.com/company/keyboard-club-uc-san-diego/"
             className={styles.link}
           >
-            <Image className={styles.icon} src={LinkedIn} alt="LinkedIn" />
+            <LinkedIn className={styles.icon} />
             <p>LinkedIn</p>
           </Link>
         </div>

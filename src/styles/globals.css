@@ -21,18 +21,13 @@ body {
   scroll-behavior: smooth;
 }
 
-#__next {
-  height: 100%;
-}
-
-.page_container {
+body {
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
-.main_content {
-  flex-grow: 1;
+#__next {
+  height: 100%;
 }
 
 button,
@@ -72,7 +67,7 @@ p {
   --cyan: #53b29b;
   --blue: #5b83ca;
   --dark-blue: #284a87;
-  --dark-grey: #4C4C4C;
+  --dark-grey: #4c4c4c;
   --black: #393939;
   --white: #fffafa;
   --light-grey: #828282;

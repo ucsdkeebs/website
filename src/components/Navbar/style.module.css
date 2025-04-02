@@ -146,6 +146,10 @@
   padding: 0.2rem 2.4rem;
 }
 
+.username {
+  color: #fffafa;
+}
+
 @media (max-width: 768px) {
   .navbar {
     padding: 0 0.7rem;

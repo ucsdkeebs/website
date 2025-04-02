@@ -6,7 +6,6 @@ export type EventObject = {
   id: string;
   title: string;
   description: string;
-  location: string;
   startTime: string;
   endTime: string;
 };
@@ -33,15 +32,10 @@ const EventCard: React.FC<{ event: EventObject }> = ({ event }) => {
   const formattedDateTimeRange = `${formattedStartTime} - ${formattedEndTime}`;
   return (
     <div className={styles.event_card}>
-      <Image
-        src={eventImage}
-        alt="Event Placeholder"
-        className={styles.event_image}
-      />
       <h2 className={styles.event_title}>{event.title}</h2>
-      <p className={styles.event_date}><strong>Date:</strong> {formattedDateTimeRange}</p>
-      <p className={styles.event_location}><strong>Location:</strong> {event.location}</p>
-      {/* <p className={styles.event_description}>{event.description}</p> */}
+      <p className={styles.event_date}> {formattedDateTimeRange}
+      </p>
+      <p className={styles.event_description}>{event.description}</p>
     </div>
   );
 };

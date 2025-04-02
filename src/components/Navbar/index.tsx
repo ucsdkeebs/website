@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "../Button";
 import logo from "../../../public/assets/logo.png";
-import ProfileIcon from "../../../public/assets/icons/profile.svg";
+import ProfileIcon from "../../../public/assets/icons/profile.png";
 import { deleteCookie } from "cookies-next/client";
 import { PublicProfile } from "@/lib/types/apiResponses";
 import { useRouter } from "next/router";
@@ -80,7 +80,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
           </Link>
           {user ? (
             <div className={styles.profileContainer}>
-              <ProfileIcon className={styles.profile} />
+              <Image src={ProfileIcon} width={40} height={40} alt="Profile Icon"></Image>
               <span className={styles.username}>{user.username}</span>
               <Button onClick={handleLogOut}>Log Out</Button>
             </div>

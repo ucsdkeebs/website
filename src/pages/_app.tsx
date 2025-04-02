@@ -13,13 +13,12 @@ export default function App({ Component, pageProps }: AppProps) {
       user = JSON.parse(userCookie);
     }
   } catch {}
+
   return (
-    <div className="page_container">
+    <>
       <Navbar user={user} />
-      <main className="main_content">
-        <Component {...pageProps} />
-      </main>
+      <Component {...pageProps} />
       <Footer />
-    </div>
+    </>
   );
 }
