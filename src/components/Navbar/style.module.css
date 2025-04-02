@@ -6,7 +6,7 @@
   align-items: center;
   padding: 0 2rem;
   height: 4.4rem;
-  background-color: #284a87; 
+  background-color: #284a87;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -100,7 +100,7 @@
 .link {
   text-decoration: none;
   color: #fffafa;
-  transition: all 0.3 ease; 
+  transition: all 0.3 ease;
   font-weight: 200;
 }
 
@@ -118,6 +118,12 @@
 .profile {
   width: 40px;
   height: auto;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .button {
@@ -186,7 +192,7 @@
     font-weight: 600;
     font-size: 1.6rem;
     color: #f4d48e;
-  } 
+  }
 
   .logolink {
     order: 1;
@@ -201,5 +207,13 @@
 
   .button2 {
     display: flex;
+  }
+
+  .profileContainer {
+    flex-direction: column;
+  }
+
+  .username {
+    font-size: 1.25rem;
   }
 }

@@ -80,8 +80,10 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
           </Link>
           {user ? (
             <div className={styles.profileContainer}>
+              <div className={styles.user}>
               <Image src={ProfileIcon} width={40} height={40} alt="Profile Icon"></Image>
               <span className={styles.username}>{user.username}</span>
+              </div>
               <Button onClick={handleLogOut}>Log Out</Button>
             </div>
           ) : (

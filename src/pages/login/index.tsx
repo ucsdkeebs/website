@@ -17,7 +17,6 @@ export default function Login() {
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
-      console.log("User logged in with Google:", user);
       // Make api call to check if user is in database and add them if not
       // if new user go to register page
       const userToken = await user.getIdToken();
@@ -49,10 +48,13 @@ export default function Login() {
         />
         <h1>Welcome!</h1>
         <p>
-          If you are new, sign in with your UCSD email and fill out the new user
-          information. For returning users, log in to get started!
+          If you are new, sign in with your <strong>Google</strong> account and fill out the new user
+          information. If you are a UCSD student, please use your UCSD email to
+          be allowed into UCSD-exclusive events.
         </p>
-        <Button onClick={handleGoogleLogin}>Sign in</Button>
+        <Button variant="secondary" onClick={handleGoogleLogin}>Sign in</Button>
+        <p>For returning users, please log in!</p>
+        <Button onClick={handleGoogleLogin}>Log in</Button>
       </div>
     </main>
   );

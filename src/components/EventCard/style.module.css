@@ -8,15 +8,18 @@
   padding: 1rem;
   max-width: 400px;
 }
-.event_image {
-  width: 100%;
-  height: auto;
-}
 
 .event_title {
   color: var(--black);
   font-weight: 500;
   font-size: 1.5rem;
+}
+
+.event_img img {
+  position: relative !important;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  border-radius: 7px;
 }
 
 .event_date {

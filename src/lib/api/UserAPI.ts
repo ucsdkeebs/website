@@ -11,7 +11,6 @@ export const createUser = async (
   user: UserRegistration
 ): Promise<PublicProfile> => {
   const requestUrl = `${config.api.baseUrl}${config.api.endpoints.user.createUser}`;
-  console.log(user)
   const response = await axios.post<CreateUserResponse>(requestUrl, user);
   return response.data.user;
 };
