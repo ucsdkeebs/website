@@ -4,7 +4,7 @@ import styles from "./style.module.css";
 
 const About: React.FC = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id="about">
       <div className={styles.whoSection}>
         <div className={styles.imageContainer}>
           <Image
@@ -23,12 +23,11 @@ const About: React.FC = () => {
           people can make friends based on their shared interest in keebs.We are
           also a resource for asking keyboard questions and requesting build
           services."
-            buttonText="About Us"
             variant="secondary"
           />
         </div>
       </div>
-      <div className={styles.whatSection}>
+      <div className={styles.whatSection} id="events">
         <div className={styles.blurb}>
           <TextCard
             title="What we do"
@@ -38,6 +37,7 @@ const About: React.FC = () => {
             We also host social events such as GBMs, boba socials, and game room socials. Additionally, we organize group buys for club or keyboard-related merchandise designed by our artists.`}
             buttonText="View Events"
             variant="secondary"
+            buttonHref="/events"
           />
         </div>
         <div

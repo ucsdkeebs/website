@@ -27,7 +27,7 @@ const featuredInfo = [
 
 const Featured: React.FC = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id="involved">
       <h1>How do I get involved?</h1>
       <div className={styles.cards}>
         {featuredInfo.map((activity) => (

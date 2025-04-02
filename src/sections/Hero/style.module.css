@@ -6,6 +6,8 @@
   gap: 5rem;
   background-color: var(--dark-blue);
   padding: 5rem;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .officerImage {
