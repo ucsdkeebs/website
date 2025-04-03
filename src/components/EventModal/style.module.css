@@ -83,5 +83,11 @@
   @media screen and (max-width: 768px) {
     .modalContent {
         grid-template-columns: 1fr;
+        overflow-y: auto;
+        max-height: 80%;
+        padding: 2rem;
     }
+    .eventImage img {
+        max-width: 200px;
+      }
   }
