@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { getCookie } from "cookies-next/client";
+import { getCookie } from "cookies-next";
 import { PublicProfile } from "@/lib/types/apiResponses";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";

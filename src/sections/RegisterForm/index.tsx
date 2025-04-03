@@ -9,7 +9,7 @@ import majors from "@/lib/constants/majors";
 import { UserAPI } from "@/lib/api";
 import { useForm, Controller } from "react-hook-form";
 import { useRouter } from "next/router";
-import { setCookie } from "cookies-next/client";
+import { setCookie } from "cookies-next";
 import styles from "./style.module.css";
 
 interface FormData {

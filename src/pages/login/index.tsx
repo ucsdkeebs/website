@@ -4,14 +4,21 @@ import Logo from "../../../public/assets/logo.png";
 import { UserAPI } from "@/lib/api";
 import { auth, provider } from "@/lib/firebaseConfig";
 import { signInWithPopup } from "firebase/auth";
-import { setCookie } from "cookies-next/client";
+import { setCookie, getCookie } from "cookies-next";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./style.module.css";
 
 export default function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
+
+  useEffect(() => {
+    const userCookie = getCookie("USER");
+    if (userCookie) {
+      router.push("/");
+    }
+  }, [router]);
 
   const handleGoogleLogin = async () => {
     try {

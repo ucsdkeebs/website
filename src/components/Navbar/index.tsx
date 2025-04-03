@@ -3,7 +3,7 @@ import Link from "next/link";
 import Button from "../Button";
 import logo from "../../../public/assets/logo.png";
 import ProfileIcon from "../../../public/assets/icons/profile.png";
-import { deleteCookie } from "cookies-next/client";
+import { deleteCookie } from "cookies-next";
 import { PublicProfile } from "@/lib/types/apiResponses";
 import { useRouter } from "next/router";
 import styles from "./style.module.css";

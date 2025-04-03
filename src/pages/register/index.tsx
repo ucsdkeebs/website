@@ -1,25 +1,40 @@
-import { getCookie } from 'cookies-next/client';
+import { GetServerSideProps } from "next";
+import { getCookie } from "cookies-next";
 import Register from "@/sections/RegisterForm";
 
-export default function RegisterPage() {
-  let email = "";
-  let token = "";
+interface RegisterPageProps {
+  email: string;
+  token: string;
+}
 
+export default function RegisterPage({ email, token }: RegisterPageProps) {
+  return <Register email={email} token={token} />;
+}
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   try {
-    const userCookie = getCookie("USER");
-    const tokenCookie = getCookie("ACCESS_TOKEN");
+    const userCookie = getCookie("USER", { req, res });
+    const tokenCookie = getCookie("ACCESS_TOKEN", { req, res });
 
-    if (userCookie) {
+    let email = "";
+    let token = "";
+
+    if (typeof userCookie === "string") {
       const userData = JSON.parse(userCookie);
       email = userData?.email || "";
     }
 
-    if (tokenCookie) {
+    if (typeof tokenCookie === "string") {
       token = tokenCookie;
     }
+
+    return {
+      props: { email, token },
+    };
   } catch (error) {
     console.error("Error retrieving cookies:", error);
+    return {
+      props: { email: "", token: "" },
+    };
   }
-
-  return <Register email={email} token={token} />;
-}
+};

@@ -4,7 +4,7 @@ import { EventObject } from "@/lib/types/enum";
 import { EventAPI } from "@/lib/api";
 import { GetServerSideProps } from "next";
 import styles from "./style.module.css";
-import { getCookie } from "cookies-next/client";
+import { getCookie } from "cookies-next";
 
 interface EventsProps {
   events: EventObject[];
@@ -20,10 +20,10 @@ export default function Events({ events, loggedIn}: EventsProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   try {
     const eventsData = await EventAPI.getEvents();
-    const userCookie = getCookie("USER") || null;
+    const userCookie = getCookie("USER", { req, res }) || null;
     const loggedIn = !!userCookie;
 
     return { props: { events: eventsData, loggedIn } };
