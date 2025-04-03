@@ -58,6 +58,7 @@ const RegisterForm = ({ email, token }: RegisterProps) => {
       const response = await UserAPI.createUser(payload);
       setCookie("USER", response);
       router.push("/");
+      router.reload();
     } catch (error) {
       console.error("Error creating user:", error);
     }

@@ -37,6 +37,7 @@ export default function Login() {
       } else {
         setCookie("USER", checkUser);
         router.push("/");
+        router.reload();
       }
     } catch (error: any) {
       setErrorMessage("Failed to log in with Google");
