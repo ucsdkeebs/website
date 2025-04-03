@@ -15,6 +15,7 @@ export interface EventObject {
 }
 
 export interface TicketData {
+  _id: string; 
   first_name: string;
   last_name: string;
   gender_identity: string;

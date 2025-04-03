@@ -4,15 +4,21 @@ import { getCookie } from "cookies-next";
 import { PublicProfile } from "@/lib/types/apiResponses";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useEffect, useState } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
-  let user: PublicProfile | undefined;
-  try {
-    const userCookie = getCookie("USER");
-    if (typeof userCookie === "string") {
-      user = JSON.parse(userCookie);
+  const [user, setUser] = useState<PublicProfile | undefined>(undefined);
+
+  useEffect(() => {
+    try {
+      const userCookie = getCookie("USER");
+      if (typeof userCookie === "string") {
+        setUser(JSON.parse(userCookie));
+      }
+    } catch (error) {
+      console.error("Failed to parse user cookie:", error);
     }
-  } catch {}
+  }, []);
 
   return (
     <>

@@ -7,6 +7,7 @@ import Dropdown from "../Dropdown";
 import Image from "next/image";
 import { PublicProfile } from "@/lib/types/apiResponses";
 import { EventAPI } from "@/lib/api";
+import { useRouter } from "next/router";
 import styles from "./style.module.css";
 
 interface EventModalProps {
@@ -39,6 +40,7 @@ const EventModal: React.FC<EventModalProps> = ({
   });
 
   const [ticketData, setTicketData] = useState<TicketData[]>([]);
+  const router = useRouter();
 
   const removeTicket = (index: number) => {
     setTicketData((prevTickets) => prevTickets.filter((_, i) => i !== index));
@@ -64,8 +66,8 @@ const EventModal: React.FC<EventModalProps> = ({
           user._id,
           updatedTicketData
         );
-        setTicketData([]);
         onClose();
+        router.reload();
       }
     } catch (error: any) {
       console.error("Error RSVP-ing to event", error.message);

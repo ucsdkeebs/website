@@ -20,7 +20,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
   const handleLogOut = () => {
     deleteCookie("USER");
     deleteCookie("ACCESS_TOKEN");
-    router.push("/login");
+    router.reload();
   };
 
   return (
@@ -79,7 +79,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             Contact
           </Link>
           {user ? (
-            <div className={styles.profileContainer}>
+            <div className={styles.profileContainer} >
               <div className={styles.user}>
               <Image src={ProfileIcon} width={40} height={40} alt="Profile Icon"></Image>
               <span className={styles.username}>{user.username}</span>
@@ -96,7 +96,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
           )}
         </div>
         {!user && (
-          <Link href="/login" className={styles.button}>
+          <Link href="/login" className={styles.button} >
             Join
           </Link>
         )}

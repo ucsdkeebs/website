@@ -39,7 +39,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, loggedIn, user }) => {
       };
       fetchUserTickets();
     }
-  }, [user, event._id]);
+  }, []);
 
   const startDate = new Date(event.start_date);
   const endDate = new Date(event.end_date);

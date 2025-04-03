@@ -1,9 +1,10 @@
 import Button from "../Button";
-import { EventObject } from "@/lib/types/enum";
+import { EventObject, TicketData } from "@/lib/types/enum";
+import { QRCodeCanvas } from "qrcode.react";
 import styles from "./style.module.css";
 
 interface TicketsModalProps {
-  tickets: any[];
+  tickets: TicketData[];
   event: EventObject;
   isOpen: boolean;
   onClose: () => void;
@@ -24,6 +25,7 @@ const TicketsModal: React.FC<TicketsModalProps> = ({
         <div className={styles.ticketGrid}>
           {tickets.map((ticket, index) => (
             <div key={index} className={styles.ticketCard}>
+              <QRCodeCanvas value={ticket._id} size={128} />
               <p>
                 {ticket.first_name} {ticket.last_name} ({ticket.gender_identity}
                 )
