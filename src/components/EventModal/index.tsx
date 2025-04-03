@@ -58,13 +58,15 @@ const EventModal: React.FC<EventModalProps> = ({
         raffle_slot: 1,
         expected_spend: "$0",
       }));
-      const response = await EventAPI.rsvpToEvent(
-        event._id,
-        user._id,
-        updatedTicketData
-      );
-      setTicketData([]);
-      onClose();
+      if (user._id) {
+        const response = await EventAPI.rsvpToEvent(
+          event._id,
+          user._id,
+          updatedTicketData
+        );
+        setTicketData([]);
+        onClose();
+      }
     } catch (error: any) {
       console.error("Error RSVP-ing to event", error.message);
     }

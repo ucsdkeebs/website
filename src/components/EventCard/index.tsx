@@ -24,9 +24,14 @@ const EventCard: React.FC<EventCardProps> = ({ event, loggedIn, user }) => {
     if (user) {
       const fetchUserTickets = async () => {
         try {
-          const response = await EventAPI.getUserTicketsForEvent(user._id, event._id);
-          if (response.tickets.length > 0) {
-            setUserTickets(response.tickets);  // Set user tickets if any
+          if (user._id) {
+            const response = await EventAPI.getUserTicketsForEvent(
+              user._id,
+              event._id
+            );
+            if (response.tickets.length > 0) {
+              setUserTickets(response.tickets);
+            }
           }
         } catch (error) {
           console.error("Error fetching user tickets:", error);
@@ -75,12 +80,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, loggedIn, user }) => {
       <h2 className={styles.event_title}>{event.name}</h2>
       {event.image_link && (
         <div className={styles.event_img}>
-          <Image
-            src={event.image_link}
-            fill
-            alt="Event Image"
-            unoptimized
-          />
+          <Image src={event.image_link} fill alt="Event Image" unoptimized />
         </div>
       )}
       <p className={styles.event_date}> {formattedDateTimeRange}</p>

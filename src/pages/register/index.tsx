@@ -13,8 +13,8 @@ export default function RegisterPage({ email, token }: RegisterPageProps) {
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   try {
-    const userCookie = getCookie("USER", { req, res });
-    const tokenCookie = getCookie("ACCESS_TOKEN", { req, res });
+    const userCookie = await getCookie("USER", { req, res });
+    const tokenCookie = await getCookie("ACCESS_TOKEN", { req, res });
 
     let email = "";
     let token = "";

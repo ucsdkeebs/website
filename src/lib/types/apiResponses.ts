@@ -1,7 +1,7 @@
 import { TicketData } from "./enum";
 
 export interface PublicProfile {
-  _id: string;
+  _id?: string;
   uid: string;
   email: string;
   username: string;
