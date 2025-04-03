@@ -115,7 +115,7 @@ const EventModal: React.FC<EventModalProps> = ({
               className={styles.rsvpForm}
             >
               <p>
-                For this event, you're only allowed to get {event.ticket_limit}{" "}
+                For this event, you&apos;re only allowed to get {event.ticket_limit}{" "}
                 ticket(s)
               </p>
               <h3>Add Ticket</h3>
