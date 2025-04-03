@@ -1,17 +1,40 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Button from "../Button";
 import EventModal from "../EventModal";
-import { EventObject } from "@/lib/types/enum";
+import TicketsModal from "../TicketsModal";
+import { EventObject, TicketData } from "@/lib/types/enum";
+import { PublicProfile } from "@/lib/types/apiResponses";
+import { EventAPI } from "@/lib/api";
 import styles from "./style.module.css";
 
 interface EventCardProps {
   event: EventObject;
   loggedIn: boolean;
+  user: PublicProfile | null;
 }
 
-const EventCard:React.FC<EventCardProps> = ({ event, loggedIn }) => {
+const EventCard: React.FC<EventCardProps> = ({ event, loggedIn, user }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [userTickets, setUserTickets] = useState<TicketData[]>([]);
+  const [isTicketsModalOpen, setIsTicketsModalOpen] = useState(false);
+
+  useEffect(() => {
+    // Check if the user has already RSVP'd for this event
+    if (user) {
+      const fetchUserTickets = async () => {
+        try {
+          const response = await EventAPI.getUserTicketsForEvent(user._id, event._id);
+          if (response.tickets.length > 0) {
+            setUserTickets(response.tickets);  // Set user tickets if any
+          }
+        } catch (error) {
+          console.error("Error fetching user tickets:", error);
+        }
+      };
+      fetchUserTickets();
+    }
+  }, [user, event._id]);
 
   const startDate = new Date(event.start_date);
   const endDate = new Date(event.end_date);
@@ -35,13 +58,18 @@ const EventCard:React.FC<EventCardProps> = ({ event, loggedIn }) => {
   const formattedDateTimeRange = `${formattedStartDate} - ${formattedEndDate}`;
 
   const handleRSVPClick = () => {
-    setIsModalOpen(true);
+    if (userTickets.length > 0) {
+      setIsTicketsModalOpen(true);
+    } else {
+      setIsModalOpen(true);
+    }
   };
 
-  // Function to close the modal
   const closeModal = () => {
     setIsModalOpen(false);
+    setIsTicketsModalOpen(false);
   };
+
   return (
     <div className={styles.event_card}>
       <h2 className={styles.event_title}>{event.name}</h2>
@@ -52,23 +80,30 @@ const EventCard:React.FC<EventCardProps> = ({ event, loggedIn }) => {
             fill
             alt="Event Image"
             unoptimized
-          ></Image>
+          />
         </div>
       )}
       <p className={styles.event_date}> {formattedDateTimeRange}</p>
       <p className={styles.event_description}>{event.description}</p>
       {loggedIn && (
-        <Button className={styles.rsvp_button} onClick={handleRSVPClick}>RSVP</Button>
+        <Button className={styles.rsvp_button} onClick={handleRSVPClick}>
+          {userTickets.length > 0 ? "View Tickets" : "RSVP"}
+        </Button>
       )}
-      {isModalOpen && (
+      {user && isModalOpen && (
         <EventModal
           event={event}
           isOpen={isModalOpen}
           onClose={closeModal}
-          onRSVP={(data) => {
-            console.log("RSVP Data:", data);
-            closeModal();
-          }}
+          user={user}
+        />
+      )}
+      {user && isTicketsModalOpen && (
+        <TicketsModal
+          tickets={userTickets}
+          event={event}
+          isOpen={isTicketsModalOpen}
+          onClose={closeModal}
         />
       )}
     </div>

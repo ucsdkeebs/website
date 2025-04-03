@@ -1,5 +1,5 @@
 export interface EventObject {
-  id: string;
+  _id: string;
   name: string;
   max_attendees: number;
   max_rsvps: number;
@@ -12,4 +12,14 @@ export interface EventObject {
   description?: string;
   image_link?: string;
   is_active: boolean;
+}
+
+export interface TicketData {
+  first_name: string;
+  last_name: string;
+  gender_identity: string;
+  from_where: string;
+  expected_spend: string;
+  checked_in?: boolean;
+  raffle_slot: number;
 }

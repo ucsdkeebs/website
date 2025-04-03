@@ -10,7 +10,9 @@ const config = {
       },
       event: {
         createEvent: "/events/create",
-        getEvents: "/events/all"
+        getEvents: "/events/all",
+        rsvp: "/events/",
+        getUserTickets: "/events/get-user-tickets"
       }
     },
   },

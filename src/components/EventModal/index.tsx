@@ -1,24 +1,19 @@
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { EventObject } from "@/lib/types/enum";
+import { EventObject, TicketData } from "@/lib/types/enum";
 import InputField from "@/components/InputField";
 import Button from "../Button";
 import Dropdown from "../Dropdown";
 import Image from "next/image";
+import { PublicProfile } from "@/lib/types/apiResponses";
+import { EventAPI } from "@/lib/api";
 import styles from "./style.module.css";
 
 interface EventModalProps {
   event: EventObject;
   isOpen: boolean;
   onClose: () => void;
-  onRSVP: (data: any) => void;
-}
-
-interface FormData {
-  firstName: string;
-  lastName: string;
-  pronouns: string;
-  fromWhere: string;
+  user: PublicProfile;
 }
 
 const genders = ["She/her", "He/him", "They/them", "Other"];
@@ -27,7 +22,7 @@ const EventModal: React.FC<EventModalProps> = ({
   event,
   isOpen,
   onClose,
-  onRSVP,
+  user,
 }) => {
   const {
     register,
@@ -35,13 +30,15 @@ const EventModal: React.FC<EventModalProps> = ({
     formState: { errors },
     control,
     reset,
-  } = useForm<FormData>({
+  } = useForm<TicketData>({
     defaultValues: {
-      pronouns: "",
+      gender_identity: "",
+      raffle_slot: 1,
+      expected_spend: "$0",
     },
   });
 
-  const [ticketData, setTicketData] = useState<FormData[]>([]);
+  const [ticketData, setTicketData] = useState<TicketData[]>([]);
 
   const removeTicket = (index: number) => {
     setTicketData((prevTickets) => prevTickets.filter((_, i) => i !== index));
@@ -49,17 +46,28 @@ const EventModal: React.FC<EventModalProps> = ({
 
   if (!isOpen) return null;
 
-  // Function to add ticket
-  const addTicket = (data: FormData) => {
+  const addTicket = (data: TicketData) => {
     setTicketData((prevTickets) => [...prevTickets, data]);
-    reset(); // Reset form for next input
+    reset();
   };
 
-  // Function to submit all tickets
-  const submitAllTickets = () => {
-    onRSVP(ticketData);
-    setTicketData([]); // Clear tickets after submission
-    onClose();
+  const submitAllTickets = async () => {
+    try {
+      const updatedTicketData = ticketData.map((ticket) => ({
+        ...ticket,
+        raffle_slot: 1,
+        expected_spend: "$0",
+      }));
+      const response = await EventAPI.rsvpToEvent(
+        event._id,
+        user._id,
+        updatedTicketData
+      );
+      setTicketData([]);
+      onClose();
+    } catch (error: any) {
+      console.error("Error RSVP-ing to event", error.message);
+    }
   };
 
   return (
@@ -110,24 +118,26 @@ const EventModal: React.FC<EventModalProps> = ({
               </p>
               <h3>Add Ticket</h3>
               <InputField
-                name="firstName"
+                name="first_name"
                 register={register}
-                error={errors.firstName?.message}
+                error={errors.first_name?.message}
                 placeholder="First Name"
                 required
               />
               <InputField
-                name="lastName"
+                name="last_name"
                 register={register}
-                error={errors.lastName?.message}
+                error={errors.last_name?.message}
                 placeholder="Last Name"
                 required
               />
-              {errors.pronouns && (
-                <span className={styles.error}>{errors.pronouns.message}</span>
+              {errors.gender_identity && (
+                <span className={styles.error}>
+                  {errors.gender_identity.message}
+                </span>
               )}
               <Controller
-                name="pronouns"
+                name="gender_identity"
                 rules={{ required: "Pronouns are required" }}
                 control={control}
                 render={({ field }) => (
@@ -141,10 +151,10 @@ const EventModal: React.FC<EventModalProps> = ({
                   />
                 )}
               />
-            <InputField
-                name="fromWhere"
+              <InputField
+                name="from_where"
                 register={register}
-                error={errors.fromWhere?.message}
+                error={errors.from_where?.message}
                 placeholder="Where Did You Hear About This Event?"
                 required
               />
@@ -162,7 +172,8 @@ const EventModal: React.FC<EventModalProps> = ({
                 {ticketData.map((ticket, index) => (
                   <div key={index} className={styles.ticketCard}>
                     <p>
-                        {ticket.firstName} {ticket.lastName} ({ticket.pronouns})
+                      {ticket.first_name} {ticket.last_name} (
+                      {ticket.gender_identity})
                     </p>
                     <Button
                       onClick={() => removeTicket(index)}
