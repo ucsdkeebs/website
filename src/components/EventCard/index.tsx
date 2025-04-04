@@ -89,6 +89,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, loggedIn, user }) => {
         className={styles.rsvp_button}
         onClick={handleRSVPClick}
         disabled={!loggedIn}
+        variant={loggedIn ? "primary" : "secondary"}
       >
         {loggedIn ? (userTickets.length > 0 ? "View Tickets" : "RSVP") : "Login to RSVP"}
       </Button>
