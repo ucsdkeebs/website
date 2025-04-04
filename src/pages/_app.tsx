@@ -6,6 +6,8 @@ import { PublicProfile } from "@/lib/types/apiResponses";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useEffect, useState } from "react";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState<PublicProfile | undefined>(undefined);
@@ -32,6 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <Navbar user={user} />
       <Component {...pageProps} />
+      <ToastContainer position="top-right" autoClose={3000} />
       <Footer />
     </>
   );

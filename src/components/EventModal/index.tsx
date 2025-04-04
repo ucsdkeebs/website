@@ -9,6 +9,7 @@ import { PublicProfile } from "@/lib/types/apiResponses";
 import { EventAPI } from "@/lib/api";
 import { useRouter } from "next/router";
 import styles from "./style.module.css";
+import { toast } from 'react-toastify';
 
 interface EventModalProps {
   event: EventObject;
@@ -18,6 +19,7 @@ interface EventModalProps {
 }
 
 const genders = ["She/her", "He/him", "They/them", "Other"];
+const sources = ['Discord', 'Instagram', 'Tabling', 'Friend/Word of Mouth', 'Campus Advertising', 'Other']
 
 const EventModal: React.FC<EventModalProps> = ({
   event,
@@ -66,8 +68,11 @@ const EventModal: React.FC<EventModalProps> = ({
           user._id,
           updatedTicketData
         );
+        toast.success("RSVP Successful!");
         onClose();
-        router.reload();
+        setTimeout(() => {
+          router.reload();
+        }, 1500);
       }
     } catch (error: any) {
       console.error("Error RSVP-ing to event", error.message);
@@ -155,12 +160,20 @@ const EventModal: React.FC<EventModalProps> = ({
                   />
                 )}
               />
-              <InputField
+              <Controller
                 name="from_where"
-                register={register}
-                error={errors.from_where?.message}
-                placeholder="Where Did You Hear About This Event?"
-                required
+                rules={{ required: "From where is required" }}
+                control={control}
+                render={({ field }) => (
+                  <Dropdown
+                    name="fromwhereOptions"
+                    options={sources}
+                    value={field.value}
+                    onChange={field.onChange}
+                    className={styles.dropdown}
+                    placeholder="Where did you hear about this event?"
+                  />
+                )}
               />
 
               <Button className={styles.addTicketButton}>Add Ticket</Button>
