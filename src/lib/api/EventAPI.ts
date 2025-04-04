@@ -6,6 +6,7 @@ import axios from "axios";
 export const getEvents = async (): Promise<EventObject[]> => {
   const requestUrl = `${config.api.baseUrl}${config.api.endpoints.event.getEvents}`;
   const response = await axios.get<EventObject[]>(requestUrl);
+  console.log('response:', response.data);
   return response.data;
 };
 
