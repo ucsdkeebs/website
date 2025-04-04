@@ -11,6 +11,7 @@ import { useForm, Controller } from "react-hook-form";
 import { useRouter } from "next/router";
 import { setCookie } from "cookies-next";
 import styles from "./style.module.css";
+import { toast } from 'react-toastify';
 
 interface FormData {
   username: string;
@@ -57,8 +58,11 @@ const RegisterForm = ({ email, token }: RegisterProps) => {
       };
       const response = await UserAPI.createUser(payload);
       setCookie("USER", response);
-      router.push("/");
-      router.reload();
+      toast.success("Account Created!");
+      setTimeout(() => {
+        router.push("/");
+        router.reload();
+      }, 1500);
     } catch (error) {
       console.error("Error creating user:", error);
     }
