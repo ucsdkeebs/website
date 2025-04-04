@@ -4,7 +4,8 @@ import { RsvpResponse } from "../types/apiResponses";
 import axios from "axios";
 
 export const getEvents = async (): Promise<EventObject[]> => {
-  const requestUrl = `${config.api.baseUrl}${config.api.endpoints.event.getEvents}`;
+  const baseUrl = process.env.NEXT_PUBLIC_KEEBS_API_URL || "https://ucsdkeebs.com/api";
+  const requestUrl = `${baseUrl}${config.api.endpoints.event.getEvents}`;
   const response = await axios.get<EventObject[]>(requestUrl);
   return response.data;
 };
