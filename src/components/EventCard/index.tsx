@@ -85,11 +85,18 @@ const EventCard: React.FC<EventCardProps> = ({ event, loggedIn, user }) => {
       )}
       <p className={styles.event_date}> {formattedDateTimeRange}</p>
       <p className={styles.event_description}>{event.description}</p>
-      {loggedIn && (
+      <Button
+        className={styles.rsvp_button}
+        onClick={handleRSVPClick}
+        disabled={!loggedIn}
+      >
+        {loggedIn ? (userTickets.length > 0 ? "View Tickets" : "RSVP") : "Login to RSVP"}
+      </Button>
+      {/* {loggedIn && (
         <Button className={styles.rsvp_button} onClick={handleRSVPClick}>
           {userTickets.length > 0 ? "View Tickets" : "RSVP"}
         </Button>
-      )}
+      )} */}
       {user && isModalOpen && (
         <EventModal
           event={event}

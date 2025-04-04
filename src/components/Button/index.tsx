@@ -7,6 +7,7 @@ interface ButtonProps {
   className?: string;
   children: React.ReactNode;
   onClick?: () => void;
+  disabled?: boolean;
 }
 
 const Button = ({
@@ -14,6 +15,7 @@ const Button = ({
   href,
   className = "",
   children,
+  disabled = false,
   onClick,
 }: ButtonProps) => {
   const buttonClass = `${styles.button} ${styles[variant]} ${className}`;
@@ -23,7 +25,7 @@ const Button = ({
       {children}
     </Link>
   ) : (
-    <button className={buttonClass} onClick={onClick}>
+    <button className={buttonClass} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );
