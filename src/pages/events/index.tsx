@@ -14,6 +14,8 @@ interface EventsProps {
 }
 
 export default function Events({ events, loggedIn, user }: EventsProps) {
+  console.log('events:', events);
+
   return (
     <main className={styles.main}>
       <EventHero />
