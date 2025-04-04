@@ -25,6 +25,8 @@ export default function Events({ events, loggedIn, user }: EventsProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  console.log('getServerSideProps has been called');
+
   try {
     const eventsData = await EventAPI.getEvents();
     console.log('response:', eventsData);
