@@ -27,6 +27,7 @@ export default function Events({ events, loggedIn, user }: EventsProps) {
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   try {
     const eventsData = await EventAPI.getEvents();
+    console.log('response:', eventsData);
     const userCookie = await getCookie("USER", { req, res }) || null;
 
     const user = userCookie ? JSON.parse(userCookie as string) : null;
