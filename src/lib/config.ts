@@ -1,6 +1,10 @@
+const isServer = typeof window === 'undefined';
+
 const config = {
   api: {
-    baseUrl: process.env.NEXT_PUBLIC_KEEBS_API_URL,
+    baseUrl: isServer
+      ? process.env.SERVER_KEEBS_API_URL || "http://localhost:5000/api"
+      : process.env.NEXT_PUBLIC_KEEBS_API_URL || "https://ucsdkeebs.com/api",
     endpoints: {
       user: {
         createUser: "/users/create-user",
