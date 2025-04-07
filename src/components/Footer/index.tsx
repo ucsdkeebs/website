@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
             <Instagram className={styles.icon} />
             <p>Instagram</p>
           </Link>
-          <Link href="https://discord.gg/KPVSVhPD" className={styles.link}>
+          <Link href="https://discord.gg/mNG5YZ4U" className={styles.link}>
             <Discord className={styles.icon} />
             <p>Discord</p>
           </Link>

@@ -20,3 +20,9 @@
   color: var(--black);
   border: 1px solid var(--black);
 }
+
+.tertiary {
+  background-color: var(--grey);
+  color: var(--black);
+  opacity: 40%;
+}
