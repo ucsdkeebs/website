@@ -9,6 +9,7 @@ export interface PublicProfile {
   ucsd_affiliation?: boolean;
   year?: string;
   major?: string;
+  admin?: boolean;
 }
 
 export interface CreateUserResponse {
