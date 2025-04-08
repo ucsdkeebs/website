@@ -81,7 +81,11 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
           {user ? (
             <div className={styles.profileContainer}>
               {user.admin && (
-                <Link href="/admin" className={styles.link}>
+                <Link
+                  href="/admin"
+                  className={styles.link}
+                  onClick={() => setIsMenuOpen(false)}
+                >
                   Admin
                 </Link>
               )}
@@ -100,13 +104,18 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             <Link
               href="/login"
               className={`${styles.button} ${styles.button2}`}
+              onClick={() => setIsMenuOpen(false)}
             >
               Join
             </Link>
           )}
         </div>
         {!user && (
-          <Link href="/login" className={styles.button}>
+          <Link
+            href="/login"
+            className={styles.button}
+            onClick={() => setIsMenuOpen(false)}
+          >
             Join
           </Link>
         )}

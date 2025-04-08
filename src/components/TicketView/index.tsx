@@ -105,9 +105,9 @@ const TicketView: React.FC<TicketViewProps> = ({ tickets }) => {
         >
           ← Prev
         </Button>
-        <span>
+        <p>
           Page {currentPage} of {totalPages}
-        </span>
+        </p>
         <Button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
