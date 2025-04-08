@@ -1,18 +1,18 @@
-import QrScanner from "@/components/QrScanner";
-import Button from "@/components/Button";
+import { TicketAPI } from "@/lib/api";
+import TicketView from "@/components/TicketView";
 import { GetServerSideProps } from "next";
 import { getCookie } from "cookies-next";
 import styles from "./style.module.css";
+import { TicketData } from "@/lib/types/enum";
 
-interface AdminProps {
-  userId: string;
+interface TicketsViewProps {
+  tickets: TicketData[];
 }
 
-export default function Admin({ userId }: AdminProps) {
+export default function TicketsView({ tickets }: TicketsViewProps) {
   return (
     <main className={styles.main}>
-      <QrScanner adminId={userId} />
-      <Button href="/ticketsView">Go to Tickets View</Button>
+      <TicketView tickets={tickets}/>
     </main>
   );
 }
@@ -32,9 +32,11 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       };
     }
 
-    return { props: { userId: user._id } };
+    const ticketsData = await TicketAPI.getAllTickets(user._id);
+
+    return { props: { tickets: ticketsData } };
   } catch (error) {
-    console.error("Error fetching user:", error);
+    console.error("Error fetching tickets:", error);
     return {
       redirect: {
         destination: "/",

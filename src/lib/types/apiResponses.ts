@@ -26,3 +26,12 @@ export interface RsvpResponse {
   message: string;
   tickets: TicketData[];
 }
+
+export interface CheckInResponse {
+  message: string;
+  ticket: TicketData;
+}
+
+export interface GetAllTicketsResponse {
+  tickets: TicketData[];
+}

@@ -21,7 +21,7 @@
   border: 1px solid var(--black);
 }
 
-.tertiary {
+.tertiary, .button:disabled {
   background-color: var(--grey);
   color: var(--black);
   opacity: 40%;

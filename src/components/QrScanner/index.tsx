@@ -1,47 +1,89 @@
-import React, { useState } from "react";
-import { Scanner } from "@yudiel/react-qr-scanner";
-import axios from "axios";
+import { useState } from "react";
+import { Scanner, IDetectedBarcode } from "@yudiel/react-qr-scanner";
+import { TicketAPI } from "@/lib/api";
+import { TicketData } from "@/lib/types/enum";
+import Image from "next/image";
+import CheckIcon from "../../../public/assets/icons/check.png";
+import ErrorIcon from "../../../public/assets/icons/error.png";
+import styles from "./style.module.css";
+import Button from "../Button";
 
-interface AdminQrScannerProps {
+interface QrScannerProps {
   adminId: string;
 }
 
-const AdminQrScanner: React.FC<AdminQrScannerProps> = ({ adminId }) => {
-  const [scanResult, setScanResult] = useState<string | null>(null);
-  const [message, setMessage] = useState<string>("");
+const QrScanner: React.FC<QrScannerProps> = ({ adminId }) => {
+  const [value, setValue] = useState("");
+  const [user, setUser] = useState<TicketData | null>(null);
+  const [scannerActive, setScannerActive] = useState(false);
+  const [status, setStatus] = useState<"success" | "error" | "">("");
 
-  const handleScan = async (result: string) => {
-    if (result && result !== scanResult) {
-      setScanResult(result);
+  const handleClose = () => {
+    setScannerActive(false);
+    setValue("");
+    setUser(null);
+    setStatus("");
+  };
 
-      try {
-        const res = await axios.post(`/api/checkin/${result}/${adminId}`);
-        setMessage("✅ Check-in successful");
-      } catch (err: any) {
-        setMessage(err.response?.data?.error || "❌ Check-in failed");
-      }
+  const handleScan = async (results: IDetectedBarcode[]) => {
+    if (!results?.length) return;
+
+    const ticketId = results[0].rawValue;
+    if (ticketId === value) return;
+
+    setValue(ticketId);
+
+    try {
+      const response = await TicketAPI.checkIn(ticketId, adminId);
+      setUser(response.ticket);
+      setStatus("success");
+    } catch (err: any) {
+      setUser(null);
+      setStatus("error");
     }
   };
 
   return (
-    <div className="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4">
-      <h2 className="text-xl font-bold text-center">Admin QR Scanner</h2>
-      <Scanner
-        onScan={(text) => handleScan(text)}
-        onError={(err) => {
-          console.error("Scanner error:", err);
-          setMessage("⚠️ Camera access error");
-        }}
-        options={{
-          constraints: {
-            facingMode: "environment",
-          },
-        }}
-      />
-      {scanResult && <p className="text-gray-700">Scanned Ticket ID: {scanResult}</p>}
-      {message && <p className="font-semibold">{message}</p>}
+    <div className={styles.container}>
+      <h2>QR Code Scanner</h2>
+
+      {!scannerActive ? (
+        <Button variant="secondary" onClick={() => setScannerActive(true)}>
+          Open Scanner
+        </Button>
+      ) : (
+        <>
+          <Scanner
+            styles={{
+              container: { maxWidth: "400px" },
+              finderBorder: 4,
+            }}
+            onScan={handleScan}
+          />
+          <Button variant="secondary" onClick={handleClose}>Close Scanner</Button>
+        </>
+      )}
+
+      {value && <p>Scanned Ticket Id: {value}</p>}
+      {user && (
+        <p>
+          Scanned Name: {user.first_name} {user.last_name}
+        </p>
+      )}
+
+      {status === "success" && (
+        <Image
+          src={CheckIcon}
+          alt="Check-in success"
+          width={200}
+          height={200}
+        />
+      )}
+      {status === "error" && (
+        <Image src={ErrorIcon} alt="Check-in failed" width={200} height={200} />
+      )}
     </div>
   );
 };
 
-export default AdminQrScanner;
+export default QrScanner;

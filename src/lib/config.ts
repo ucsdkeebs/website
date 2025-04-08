@@ -17,6 +17,10 @@ const config = {
         getEvents: "/events/all",
         rsvp: "/events/",
         getUserTickets: "/events/get-user-tickets"
+      },
+      ticket: {
+        checkinTicket: "/tickets/check-in",
+        getAllTickets: "/tickets/all"
       }
     },
   },
