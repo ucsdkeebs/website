@@ -75,12 +75,12 @@ const QrScanner: React.FC<QrScannerProps> = ({ adminId }) => {
         <Image
           src={CheckIcon}
           alt="Check-in success"
-          width={200}
-          height={200}
+          width={150}
+          height={150}
         />
       )}
       {status === "error" && (
-        <Image src={ErrorIcon} alt="Check-in failed" width={200} height={200} />
+        <Image src={ErrorIcon} alt="Check-in failed" width={150} height={150} />
       )}
     </div>
   );
