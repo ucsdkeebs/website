@@ -2,6 +2,7 @@ import { useState } from "react";
 import { TicketData } from "@/lib/types/enum";
 import Dropdown from "@/components/Dropdown";
 import Button from "@/components/Button";
+import DownloadIcon from '../../../public/assets/icons/download.svg';
 import styles from "./style.module.css";
 
 interface TicketViewProps {
@@ -46,6 +47,28 @@ const TicketView: React.FC<TicketViewProps> = ({ tickets }) => {
     }
   };
 
+  const downloadCSV = () => {
+    const headers = ["Ticket ID", "Name", "From", "Spend", "Checked In"];
+    const rows = filteredTickets.map((ticket) => [
+      ticket._id,
+      `${ticket.first_name} ${ticket.last_name}`,
+      ticket.from_where,
+      ticket.expected_spend,
+      ticket.checked_in ? "Checked In" : "Not Checked In",
+    ]);
+
+    const csvContent =
+      [headers, ...rows].map((row) => row.join(",")).join("\n");
+
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", "tickets.csv");
+    link.click();
+  };
+
   return (
     <div className={styles.container}>
       <h2>All Tickets</h2>
@@ -70,6 +93,7 @@ const TicketView: React.FC<TicketViewProps> = ({ tickets }) => {
             setCurrentPage(1); // reset to first page
           }}
         />
+        <DownloadIcon className={styles.downloadIcon}onClick={downloadCSV}/>
       </div>
 
       <table className={styles.table}>
