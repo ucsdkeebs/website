@@ -27,6 +27,7 @@ body {
 }
 
 #__next {
+  flex: 1;
   height: 100%;
 }
 
