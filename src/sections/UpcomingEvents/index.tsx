@@ -9,15 +9,49 @@ interface UpcomingEventsProps {
   user: PublicProfile | null;
 }
 
-const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events, loggedIn, user }) => {
+const UpcomingEvents: React.FC<UpcomingEventsProps> = ({
+  events,
+  loggedIn,
+  user,
+}) => {
+  const now = new Date();
+
+  const upcomingEvents = events.filter(
+    (event) => new Date(event.end_date) >= now
+  );
+  const pastEvents = events.filter((event) => new Date(event.end_date) < now);
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Upcoming Events</h1>
       <div className={styles.eventContainer}>
-        {events.length > 0 ? (
-          events.map((event) => <EventCard key={event._id} event={event} loggedIn={loggedIn} user={user}/>)
+        {upcomingEvents.length > 0 ? (
+          upcomingEvents.map((event) => (
+            <EventCard
+              key={event._id}
+              event={event}
+              loggedIn={loggedIn}
+              user={user}
+            />
+          ))
         ) : (
           <p>No upcoming events available.</p>
+        )}
+      </div>
+
+      <h1 className={styles.title}>Past Events</h1>
+      <div className={styles.eventContainer}>
+        {pastEvents.length > 0 ? (
+          pastEvents.map((event) => (
+            <EventCard
+              key={event._id}
+              event={event}
+              loggedIn={loggedIn}
+              user={user}
+            />
+          ))
+        ) : (
+          <p>No past events.</p>
         )}
       </div>
     </div>

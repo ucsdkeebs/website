@@ -4,6 +4,7 @@
   flex-direction: column;
   gap: 9px;
   position: relative;
+  min-width: fit-content;
 }
 
 .dropdownWrapper.readOnly {
@@ -13,6 +14,7 @@
 .dropdownWrapper .selector {
   display: flex;
   align-items: center;
+  gap: 1rem;
   border-radius: 8px;
   border: 1px solid var(--black);
   padding: 0.5rem;

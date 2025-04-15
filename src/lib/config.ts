@@ -13,7 +13,7 @@ const config = {
         deleteUser: "/users/delete-user",
       },
       event: {
-        createEvent: "/events/create",
+        createEvent: "/events/create-event",
         getEvents: "/events/all",
         rsvp: "/events/",
         getUserTickets: "/events/get-user-tickets"

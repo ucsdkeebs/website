@@ -7,6 +7,7 @@ interface InputFieldProps {
   error?: string;
   placeholder: string;
   required?: boolean;
+  type?: React.HTMLInputTypeAttribute;
 }
 
 const InputField = ({
@@ -15,6 +16,7 @@ const InputField = ({
   error,
   placeholder,
   required = false,
+  type = "text",
 }: InputFieldProps) => {
   return (
     <div className={styles.inputContainer}>
@@ -22,6 +24,7 @@ const InputField = ({
         {...register(name, {
           required: required ? `${placeholder} is required` : false,
         })}
+        type={type}
         className={styles.input}
         placeholder={placeholder}
       />

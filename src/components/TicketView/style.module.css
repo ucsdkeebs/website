@@ -51,13 +51,19 @@
 }
 
 @media screen and (max-width: 870px) {
+  .container {
+    width: 100%;
+  }
+
   .table,
   .table thead,
   .table tbody,
   .table th,
   .table td,
   .table tr {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 
   .table thead {
@@ -65,8 +71,6 @@
   }
 
   .table tbody {
-    display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 1.5rem;
   }
@@ -79,11 +83,11 @@
   }
 
   .table td {
-    display: flex;
+    flex-direction: row;
     padding: 0.5rem;
     border: none;
     border-bottom: 1px solid #eee;
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 
   .table td:last-child {

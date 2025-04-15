@@ -15,7 +15,15 @@ export interface EventObject {
 }
 
 export interface TicketData {
-  _id: string; 
+  _id: string;
+  ownerId: {
+    _id: string;
+    email: string;
+  };
+  eventId: {
+    _id: string;
+    name: string;
+  };
   first_name: string;
   last_name: string;
   gender_identity: string;

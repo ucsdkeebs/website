@@ -1,20 +1,17 @@
-import QrScanner from "@/components/QrScanner";
-import Button from "@/components/Button";
 import { GetServerSideProps } from "next";
 import { getUserCookie } from "@/lib/utils/auth";
 import { PublicProfile } from "@/lib/types/apiResponses";
+import EventForm from "@/sections/EventForm";
 import styles from "./style.module.css";
 
-interface AdminProps {
+interface CreateEventProps {
   user: PublicProfile;
 }
 
-export default function Admin({ user }: AdminProps) {
+export default function CreateEvent({ user }: CreateEventProps) {
   return (
     <main className={styles.main}>
-      <QrScanner admin={user} />
-      <Button href="/ticketsView">Go to Tickets View</Button>
-      <Button href='/createEvent'>Create An Event</Button>
+      <EventForm user={user} />
     </main>
   );
 }

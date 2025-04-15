@@ -5,14 +5,15 @@ import { TicketData } from "@/lib/types/enum";
 import Image from "next/image";
 import CheckIcon from "../../../public/assets/icons/check.png";
 import ErrorIcon from "../../../public/assets/icons/error.png";
+import { PublicProfile } from "@/lib/types/apiResponses";
 import styles from "./style.module.css";
 import Button from "../Button";
 
 interface QrScannerProps {
-  adminId: string;
+  admin: PublicProfile;
 }
 
-const QrScanner: React.FC<QrScannerProps> = ({ adminId }) => {
+const QrScanner: React.FC<QrScannerProps> = ({ admin }) => {
   const [value, setValue] = useState("");
   const [user, setUser] = useState<TicketData | null>(null);
   const [scannerActive, setScannerActive] = useState(false);
@@ -34,7 +35,7 @@ const QrScanner: React.FC<QrScannerProps> = ({ adminId }) => {
     setValue(ticketId);
 
     try {
-      const response = await TicketAPI.checkIn(ticketId, adminId);
+      const response = await TicketAPI.checkIn(ticketId, admin._id as string);
       setUser(response.ticket);
       setStatus("success");
     } catch (err: any) {

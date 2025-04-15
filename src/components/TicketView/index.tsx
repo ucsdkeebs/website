@@ -2,7 +2,7 @@ import { useState } from "react";
 import { TicketData } from "@/lib/types/enum";
 import Dropdown from "@/components/Dropdown";
 import Button from "@/components/Button";
-import DownloadIcon from '../../../public/assets/icons/download.svg';
+import DownloadIcon from "../../../public/assets/icons/download.svg";
 import styles from "./style.module.css";
 
 interface TicketViewProps {
@@ -12,11 +12,16 @@ interface TicketViewProps {
 const TicketView: React.FC<TicketViewProps> = ({ tickets }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterStatus, setFilterStatus] = useState("All");
+  const [filterEvent, setFilterEvent] = useState("All");
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
   const statusOptions = ["All", "Checked In", "Not Checked In"];
+  const eventOptions = [
+    "All",
+    ...Array.from(new Set(tickets.map((t) => t.eventId.name))),
+  ];
 
   // Apply search and filter
   const filteredTickets = tickets.filter((ticket) => {
@@ -30,7 +35,10 @@ const TicketView: React.FC<TicketViewProps> = ({ tickets }) => {
         ? ticket.checked_in
         : !ticket.checked_in;
 
-    return matchesName && matchesStatus;
+    const matchesEvent =
+      filterEvent === "All" ? true : ticket.eventId.name === filterEvent;
+
+    return matchesName && matchesStatus && matchesEvent;
   });
 
   // Pagination calculations
@@ -48,17 +56,28 @@ const TicketView: React.FC<TicketViewProps> = ({ tickets }) => {
   };
 
   const downloadCSV = () => {
-    const headers = ["Ticket ID", "Name", "From", "Spend", "Checked In"];
+    const headers = [
+      "Event",
+      "Ticket ID",
+      "Name",
+      "Email",
+      "From",
+      "Spend",
+      "Checked In",
+    ];
     const rows = filteredTickets.map((ticket) => [
+      ticket.eventId.name,
       ticket._id,
       `${ticket.first_name} ${ticket.last_name}`,
+      ticket.ownerId.email,
       ticket.from_where,
       ticket.expected_spend,
       ticket.checked_in ? "Checked In" : "Not Checked In",
     ]);
 
-    const csvContent =
-      [headers, ...rows].map((row) => row.join(",")).join("\n");
+    const csvContent = [headers, ...rows]
+      .map((row) => row.join(","))
+      .join("\n");
 
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
@@ -72,7 +91,6 @@ const TicketView: React.FC<TicketViewProps> = ({ tickets }) => {
   return (
     <div className={styles.container}>
       <h2>All Tickets</h2>
-
       <div className={styles.filters}>
         <input
           type="text"
@@ -80,27 +98,36 @@ const TicketView: React.FC<TicketViewProps> = ({ tickets }) => {
           value={searchTerm}
           onChange={(e) => {
             setSearchTerm(e.target.value);
-            setCurrentPage(1); // reset to first page
+            setCurrentPage(1);
           }}
         />
-
         <Dropdown
           name="checkin-filter"
           options={statusOptions}
           value={filterStatus}
           onChange={(value) => {
             setFilterStatus(value);
-            setCurrentPage(1); // reset to first page
+            setCurrentPage(1);
           }}
         />
-        <DownloadIcon className={styles.downloadIcon}onClick={downloadCSV}/>
+        <Dropdown
+          name="event-filter"
+          options={eventOptions}
+          value={filterEvent}
+          onChange={(value) => {
+            setFilterEvent(value);
+            setCurrentPage(1);
+          }}
+        />
+        <DownloadIcon className={styles.downloadIcon} onClick={downloadCSV} />
       </div>
 
       <table className={styles.table}>
         <thead>
           <tr>
-            <th>Ticket ID</th>
+            <th>Event</th>
             <th>Name</th>
+            <th>Email</th>
             <th>From</th>
             <th>Spend</th>
             <th>Checked In</th>
@@ -109,10 +136,11 @@ const TicketView: React.FC<TicketViewProps> = ({ tickets }) => {
         <tbody>
           {paginatedTickets.map((ticket) => (
             <tr key={ticket._id}>
-              <td data-label="Ticket ID">{ticket._id}</td>
+              <td data-label="Event">{ticket.eventId.name}</td>
               <td data-label="Name">
                 {ticket.first_name} {ticket.last_name}
               </td>
+              <td data-label="Email">{ticket.ownerId.email}</td>
               <td data-label="From">{ticket.from_where}</td>
               <td data-label="Spend">{ticket.expected_spend}</td>
               <td data-label="Checked In">{ticket.checked_in ? "✅" : "❌"}</td>
