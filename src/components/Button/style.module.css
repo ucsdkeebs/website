@@ -27,3 +27,7 @@
   color: var(--black);
   opacity: 40%;
 }
+
+.button:disabled {
+  cursor: default;
+}

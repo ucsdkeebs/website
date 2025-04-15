@@ -4,7 +4,7 @@ import styles from "./style.module.css";
 
 const About: React.FC = () => {
   return (
-    <div className={styles.container} id="about">
+    <div className={styles.container}>
       <div className={styles.whoSection}>
         <div className={styles.imageContainer}>
           <Image

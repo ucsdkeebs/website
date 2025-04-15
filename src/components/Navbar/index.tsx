@@ -44,7 +44,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             <Image className={styles.logo} src={logo} alt="logo" />
           </Link>
           <Link
-            href="/#about"
+            href="/"
             className={styles.link}
             onClick={() => setIsMenuOpen(false)}
           >
@@ -56,20 +56,6 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             onClick={() => setIsMenuOpen(false)}
           >
             Events
-          </Link>
-          <Link
-            href="/#involved"
-            className={styles.link}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Get Involved
-          </Link>
-          <Link
-            href="/#sponsors"
-            className={styles.link}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Sponsors
           </Link>
           <Link
             href="/#contact"

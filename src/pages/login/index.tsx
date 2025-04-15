@@ -4,21 +4,16 @@ import Logo from "../../../public/assets/logo.png";
 import { UserAPI } from "@/lib/api";
 import { auth, provider } from "@/lib/firebaseConfig";
 import { signInWithPopup } from "firebase/auth";
-import { setCookie, getCookie } from "cookies-next";
+import { setCookie } from "cookies-next";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { GetServerSideProps } from "next";
+import { getUserCookie } from "@/lib/utils/auth";
 import styles from "./style.module.css";
 
 export default function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
-
-  useEffect(() => {
-    const userCookie = getCookie("USER");
-    if (userCookie) {
-      router.push("/");
-    }
-  }, [router]);
 
   const handleGoogleLogin = async () => {
     try {
@@ -56,14 +51,30 @@ export default function Login() {
         />
         <h1>Welcome!</h1>
         <p>
-          If you are new, sign in with your <strong>Google</strong> account and fill out the new user
-          information. If you are a UCSD student, please use your UCSD email to
-          be allowed into UCSD-exclusive events.
+          If you are new, sign in with your <strong>Google</strong> account and
+          fill out the new user information. If you are a UCSD student, please
+          use your UCSD email to be allowed into UCSD-exclusive events.
         </p>
-        <Button variant="secondary" onClick={handleGoogleLogin}>Sign in</Button>
+        <Button variant="secondary" onClick={handleGoogleLogin}>
+          Sign in
+        </Button>
         <p>For returning users, please log in!</p>
         <Button onClick={handleGoogleLogin}>Log in</Button>
       </div>
     </main>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const user = await getUserCookie({ req, res });
+
+  if (user) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return { props: {} };
+};

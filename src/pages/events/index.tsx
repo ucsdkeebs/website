@@ -4,7 +4,7 @@ import { EventObject } from "@/lib/types/enum";
 import { EventAPI } from "@/lib/api";
 import { GetServerSideProps } from "next";
 import styles from "./style.module.css";
-import { getCookie } from "cookies-next";
+import { getUserCookie } from "@/lib/utils/auth";
 import { PublicProfile } from "@/lib/types/apiResponses";
 
 interface EventsProps {
@@ -14,8 +14,6 @@ interface EventsProps {
 }
 
 export default function Events({ events, loggedIn, user }: EventsProps) {
-  console.log('events:', events);
-
   return (
     <main className={styles.main}>
       <EventHero />
@@ -25,20 +23,26 @@ export default function Events({ events, loggedIn, user }: EventsProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  console.log('getServerSideProps has been called');
-
   try {
     const eventsData = await EventAPI.getEvents();
-    console.log('response:', eventsData);
-    const userCookie = await getCookie("USER", { req, res }) || null;
-
-    const user = userCookie ? JSON.parse(userCookie as string) : null;
+    const user = await getUserCookie({ req, res });
     const loggedIn = !!user;
 
-    return { props: { events: eventsData, loggedIn, user } };
+    return {
+      props: {
+        events: eventsData,
+        loggedIn,
+        user,
+      },
+    };
   } catch (error) {
     console.error("Error fetching events:", error);
-
-    return { props: { events: [], loggedIn: false, user: null } };
+    return {
+      props: {
+        events: [],
+        loggedIn: false,
+        user: null,
+      },
+    };
   }
 };

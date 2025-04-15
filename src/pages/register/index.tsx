@@ -1,5 +1,6 @@
 import { GetServerSideProps } from "next";
 import { getCookie } from "cookies-next";
+import { getUserCookie } from "@/lib/utils/auth";
 import Register from "@/sections/RegisterForm";
 
 interface RegisterPageProps {
@@ -13,20 +14,11 @@ export default function RegisterPage({ email, token }: RegisterPageProps) {
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   try {
-    const userCookie = await getCookie("USER", { req, res });
+    const userData = await getUserCookie({ req, res });
     const tokenCookie = await getCookie("ACCESS_TOKEN", { req, res });
 
-    let email = "";
-    let token = "";
-
-    if (typeof userCookie === "string") {
-      const userData = JSON.parse(userCookie);
-      email = userData?.email || "";
-    }
-
-    if (typeof tokenCookie === "string") {
-      token = tokenCookie;
-    }
+    const email = userData?.email || "";
+    const token = typeof tokenCookie === "string" ? tokenCookie : "";
 
     return {
       props: { email, token },

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import styles from "./style.module.css";
 import Discord from "../../../public/assets/discord.svg";
@@ -8,7 +7,7 @@ import LinkedIn from "../../../public/assets/linkedin.svg";
 
 const Footer: React.FC = () => {
   return (
-    <div className={styles.footer}>
+    <div className={styles.footer} id="contact">
       <div className={styles.contactInfo}>
         <h3>Contact Us</h3>
         <div className={styles.iconDiv}>
