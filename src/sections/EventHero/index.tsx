@@ -32,6 +32,35 @@ const EventHero: React.FC = () => {
           <p className={styles.blurb}>New Year New Keebs | Winter 2025</p>
         </div>
       </div>
+      <div className={styles.carousel}>
+        {[
+          {
+            src: LITK,
+            alt: "LITK image",
+            caption: "Love In The Keebs | Winter 2024",
+          },
+          {
+            src: FITK,
+            alt: "FITK image",
+            caption: "Fall Into Keebs | Fall 2024",
+          },
+          {
+            src: NYNK,
+            alt: "NYNK image",
+            caption: "New Year New Keebs | Winter 2025",
+          },
+        ].map((item, index) => (
+          <div key={index} className={styles.slide}>
+            <Image
+              src={item.src}
+              fill
+              alt={item.alt}
+              className={styles.carouselImage}
+            />
+            <p className={styles.caption}>{item.caption}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

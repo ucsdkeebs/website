@@ -20,7 +20,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
   const handleLogOut = () => {
     deleteCookie("USER");
     deleteCookie("ACCESS_TOKEN");
-    router.reload();
+    router.push("/login");
   };
 
   return (

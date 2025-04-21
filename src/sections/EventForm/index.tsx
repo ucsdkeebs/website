@@ -50,10 +50,7 @@ const EventForm = ({ user }: EventFormProps) => {
       };
       const response = await EventAPI.createEvent(payload);
       toast.success("Event Created!");
-      router.push("/admin");
-      setTimeout(() => {
-        router.reload();
-      }, 1500);
+      router.push("/events");
     } catch (error: any) {
       console.error(error);
       toast.error(

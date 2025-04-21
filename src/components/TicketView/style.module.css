@@ -30,11 +30,17 @@
 
 .filters input {
     border-radius: 8px;
-    border: 1px solid var(--black);
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     width: 100%;
     padding: 0.5rem;
     box-sizing: border-box;
     background-color: #FBF9FB;
+}
+
+.filters input:focus, .filters input:focus-visible {
+  border: none;
+  outline: none;
 }
 
 .pagination {
@@ -87,7 +93,7 @@
     padding: 0.5rem;
     border: none;
     border-bottom: 1px solid #eee;
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 
   .table td:last-child {

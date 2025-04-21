@@ -59,10 +59,7 @@ const RegisterForm = ({ email, token }: RegisterProps) => {
       const response = await UserAPI.createUser(payload);
       setCookie("USER", response);
       toast.success("Account Created!");
-      router.push("/");
-      setTimeout(() => {
-        router.reload();
-      }, 1500);
+      router.push("/events");
     } catch (error) {
       console.error("Error creating user:", error);
     }

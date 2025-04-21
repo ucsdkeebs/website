@@ -34,6 +34,17 @@ const Featured: React.FC = () => {
           <FeaturedCard key={activity.id} activity={activity} />
         ))}
       </div>
+
+        <div className={styles.carousel}>
+          {featuredInfo.map((activity, index) => (
+            <div
+              key={activity.id}
+              className={styles.slide}
+            >
+              <FeaturedCard activity={activity} />
+            </div>
+          ))}
+        </div>
     </div>
   );
 };

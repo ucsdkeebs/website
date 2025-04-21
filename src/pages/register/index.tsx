@@ -14,11 +14,34 @@ export default function RegisterPage({ email, token }: RegisterPageProps) {
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   try {
-    const userData = await getUserCookie({ req, res });
+    const userCookie = await getUserCookie({ req, res });
+
+    if (userCookie) {
+      return {
+        redirect: {
+          destination: "/",
+          permanent: false,
+        },
+      };
+    }
+    const userData = await getCookie("GOOGLE_USER", { req, res });
     const tokenCookie = await getCookie("ACCESS_TOKEN", { req, res });
 
-    const email = userData?.email || "";
+    let email = "";
+    if (typeof userData === "string") {
+      const parsedUser = JSON.parse(userData);
+      email = parsedUser.email || "";
+    }
     const token = typeof tokenCookie === "string" ? tokenCookie : "";
+
+    if (!email || !token) {
+      return {
+        redirect: {
+          destination: "/",
+          permanent: false,
+        },
+      };
+    }
 
     return {
       props: { email, token },
@@ -26,7 +49,10 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   } catch (error) {
     console.error("Error retrieving cookies:", error);
     return {
-      props: { email: "", token: "" },
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
     };
   }
 };

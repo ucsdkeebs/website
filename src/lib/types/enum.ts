@@ -32,3 +32,9 @@ export interface TicketData {
   checked_in?: boolean;
   raffle_slot: number;
 }
+
+export interface Sponsor {
+  name: string;
+  url: string;
+  image: string;
+}

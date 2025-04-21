@@ -6,6 +6,7 @@ import TicketsModal from "../TicketsModal";
 import { EventObject, TicketData } from "@/lib/types/enum";
 import { PublicProfile } from "@/lib/types/apiResponses";
 import { EventAPI } from "@/lib/api";
+import { useRouter } from "next/router";
 import styles from "./style.module.css";
 
 interface EventCardProps {
@@ -18,6 +19,8 @@ const EventCard: React.FC<EventCardProps> = ({ event, loggedIn, user }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userTickets, setUserTickets] = useState<TicketData[]>([]);
   const [isTicketsModalOpen, setIsTicketsModalOpen] = useState(false);
+
+  const router = useRouter();
 
   useEffect(() => {
     // Check if the user has already RSVP'd for this event
@@ -63,6 +66,11 @@ const EventCard: React.FC<EventCardProps> = ({ event, loggedIn, user }) => {
   const formattedDateTimeRange = `${formattedStartDate} - ${formattedEndDate}`;
 
   const handleRSVPClick = () => {
+    if (!loggedIn) {
+      router.push("/login");
+      return;
+    }
+
     if (userTickets.length > 0) {
       setIsTicketsModalOpen(true);
     } else {
@@ -77,7 +85,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, loggedIn, user }) => {
 
   return (
     <div className={styles.event_card}>
-      <h2 className={styles.event_title}>{event.name}</h2>
+      <h3 className={styles.event_title}>{event.name}</h3>
       {event.image_link && (
         <div className={styles.event_img}>
           <Image src={event.image_link} fill alt="Event Image" unoptimized />
@@ -86,12 +94,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, loggedIn, user }) => {
       <p className={styles.event_date}> {formattedDateTimeRange}</p>
       <p className={styles.event_description}>{event.description}</p>
       {new Date(event.end_date) > new Date() && (
-        <Button
-          className={styles.rsvp_button}
-          onClick={handleRSVPClick}
-          disabled={!loggedIn}
-          variant={loggedIn ? "primary" : "tertiary"}
-        >
+        <Button className={styles.rsvp_button} onClick={handleRSVPClick}>
           {loggedIn
             ? userTickets.length > 0
               ? "View Tickets"

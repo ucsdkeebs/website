@@ -27,12 +27,11 @@ export default function Login() {
       setCookie("ACCESS_TOKEN", userToken);
 
       if (checkUser == "/register") {
-        setCookie("USER", user);
+        setCookie("GOOGLE_USER", user);
         router.push("/register");
       } else {
         setCookie("USER", checkUser);
-        router.push("/");
-        router.reload();
+        router.push("/events");
       }
     } catch (error: any) {
       setErrorMessage("Failed to log in with Google");

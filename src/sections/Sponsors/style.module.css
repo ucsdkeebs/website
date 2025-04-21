@@ -29,3 +29,17 @@
   text-decoration: none;
   border-style: solid;
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 2rem;
+  }
+
+  .blurb {
+    max-width: 100%;
+  }
+
+  .message {
+    max-width: 100%;
+  }
+}

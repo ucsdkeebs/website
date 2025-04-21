@@ -1,15 +1,22 @@
 .inputContainer {
   width: 100%;
 }
-.input, .select {
+
+.input {
   border-radius: 8px;
-  border: 1px solid var(--black);
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   width: 100%;
   padding: 0.5rem;
   box-sizing: border-box;
-  background-color: #FBF9FB;
+  background-color: #fbf9fb;
+}
+
+.input:focus, .input:focus-visible {
+  border: none;
+  outline: none;
 }
 
 .placeholder {
-    color: var(--light-grey);
+  color: var(--light-grey);
 }

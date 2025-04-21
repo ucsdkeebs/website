@@ -24,7 +24,11 @@
   aspect-ratio: 1;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 2rem;
+  }
+
   .whoSection,
   .whatSection {
     flex-direction: column;

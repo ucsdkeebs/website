@@ -9,7 +9,7 @@ import { PublicProfile } from "@/lib/types/apiResponses";
 import { EventAPI } from "@/lib/api";
 import { useRouter } from "next/router";
 import styles from "./style.module.css";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 interface EventModalProps {
   event: EventObject;
@@ -19,7 +19,14 @@ interface EventModalProps {
 }
 
 const genders = ["She/her", "He/him", "They/them", "Other"];
-const sources = ['Discord', 'Instagram', 'Tabling', 'Friend/Word of Mouth', 'Campus Advertising', 'Other']
+const sources = [
+  "Discord",
+  "Instagram",
+  "Tabling",
+  "Friend/Word of Mouth",
+  "Campus Advertising",
+  "Other",
+];
 
 const EventModal: React.FC<EventModalProps> = ({
   event,
@@ -36,12 +43,14 @@ const EventModal: React.FC<EventModalProps> = ({
   } = useForm<TicketData>({
     defaultValues: {
       gender_identity: "",
+      from_where: "",
       raffle_slot: 1,
       expected_spend: "$0",
     },
   });
 
   const [ticketData, setTicketData] = useState<TicketData[]>([]);
+  const [cartOpen, setCartOpen] = useState(false);
   const router = useRouter();
 
   const removeTicket = (index: number) => {
@@ -80,11 +89,12 @@ const EventModal: React.FC<EventModalProps> = ({
   };
 
   return (
-    <div className={styles.modalOverlay} onClick={onClose}>
+    <div className={styles.modalOverlay}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+        <Button className={styles.closeButton} onClick={onClose}>
+          &times;
+        </Button>
         <div className={styles.eventInfo}>
-          <h2 className={styles.eventTitle}>{event.name}</h2>
-
           {event.image_link && (
             <div className={styles.eventImage}>
               <Image
@@ -95,7 +105,7 @@ const EventModal: React.FC<EventModalProps> = ({
               />
             </div>
           )}
-
+          <h3 className={styles.eventTitle}>{event.name}</h3>
           <p className={styles.eventDate}>
             {new Date(event.start_date).toLocaleString("en-US", {
               month: "short",
@@ -112,18 +122,18 @@ const EventModal: React.FC<EventModalProps> = ({
               hour12: true,
             })}
           </p>
-
           <p className={styles.eventDescription}>{event.description}</p>
         </div>
+        <hr className={styles.divider}/>
         <div className={styles.formContainer}>
           {ticketData.length < event.ticket_limit ? (
             <form
               onSubmit={handleSubmit(addTicket)}
               className={styles.rsvpForm}
             >
-              <p>
-                For this event, you&apos;re only allowed to get {event.ticket_limit}{" "}
-                ticket(s)
+              <p className={styles.ticketLimit}>
+                For this event, you&apos;re only allowed to get{" "}
+                {event.ticket_limit} ticket(s)
               </p>
               <h3>Add Ticket</h3>
               <InputField
@@ -171,7 +181,7 @@ const EventModal: React.FC<EventModalProps> = ({
                     value={field.value}
                     onChange={field.onChange}
                     className={styles.dropdown}
-                    placeholder="Where did you hear about this event?"
+                    placeholder="Where did you hear about this?"
                   />
                 )}
               />
