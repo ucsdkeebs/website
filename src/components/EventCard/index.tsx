@@ -71,10 +71,14 @@ const EventCard: React.FC<EventCardProps> = ({ event, loggedIn, user }) => {
       return;
     }
 
-    if (userTickets.length > 0) {
-      setIsTicketsModalOpen(true);
+    const hasRemainingTickets =
+      event.ticket_limit === undefined ||
+      userTickets.length < event.ticket_limit;
+
+    if (hasRemainingTickets) {
+      setIsModalOpen(true); // allow them to RSVP for more tickets
     } else {
-      setIsModalOpen(true);
+      setIsTicketsModalOpen(true); // they've hit the limit, just view existing
     }
   };
 
@@ -94,13 +98,36 @@ const EventCard: React.FC<EventCardProps> = ({ event, loggedIn, user }) => {
       <p className={styles.event_date}> {formattedDateTimeRange}</p>
       <p className={styles.event_description}>{event.description}</p>
       {new Date(event.end_date) > new Date() && (
-        <Button className={styles.rsvp_button} onClick={handleRSVPClick}>
-          {loggedIn
-            ? userTickets.length > 0
-              ? "View Tickets"
-              : "RSVP"
-            : "Login to RSVP"}
-        </Button>
+        <>
+          {loggedIn ? (
+            <>
+              {userTickets.length < event.ticket_limit && (
+                <Button
+                  className={styles.rsvp_button}
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  RSVP
+                </Button>
+              )}
+              {userTickets.length > 0 && (
+                <Button
+                  className={styles.rsvp_button}
+                  onClick={() => setIsTicketsModalOpen(true)}
+                  variant="secondary"
+                >
+                  View Tickets
+                </Button>
+              )}
+            </>
+          ) : (
+            <Button
+              className={styles.rsvp_button}
+              onClick={() => router.push("/login")}
+            >
+              Login to RSVP
+            </Button>
+          )}
+        </>
       )}
       {user && isModalOpen && (
         <EventModal

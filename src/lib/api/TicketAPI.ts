@@ -39,3 +39,21 @@ export const getAllTickets = async (
     }
   }
 };
+
+// Get user's tickets
+export const getUserTickets = async (
+  userId: string
+): Promise<TicketData[]> => {
+  try {
+    const requestUrl = `${config.api.baseUrl}${config.api.endpoints.ticket.getUserTicket}/${userId}`;
+    const response = await axios.get<GetAllTicketsResponse>(requestUrl);
+
+    return response.data.tickets;
+  } catch (error: any) {
+    if (error.response) {
+      throw new Error(error.response.data.error || "Couldn't get user tickets");
+    } else {
+      throw new Error("Network error or failed to reach server");
+    }
+  }
+}

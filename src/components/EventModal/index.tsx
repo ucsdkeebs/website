@@ -50,7 +50,6 @@ const EventModal: React.FC<EventModalProps> = ({
   });
 
   const [ticketData, setTicketData] = useState<TicketData[]>([]);
-  const [cartOpen, setCartOpen] = useState(false);
   const router = useRouter();
 
   const removeTicket = (index: number) => {

@@ -1,20 +1,20 @@
 import { TicketAPI } from "@/lib/api";
-import TicketView from "@/components/TicketView";
 import { GetServerSideProps } from "next";
 import { getUserCookie } from "@/lib/utils/auth";
 import { TicketData } from "@/lib/types/enum";
 import { PublicProfile } from "@/lib/types/apiResponses";
+import Profile from "@/components/Profile";
 import styles from "./style.module.css";
 
-interface TicketsViewProps {
+interface ProfileProps {
   tickets: TicketData[];
   user: PublicProfile;
 }
 
-export default function TicketsView({ tickets, user }: TicketsViewProps) {
+export default function ProfilePage({ tickets, user }: ProfileProps) {
   return (
     <main className={styles.main}>
-      <TicketView tickets={tickets} />
+      <Profile tickets={tickets} user={user} />
     </main>
   );
 }
@@ -23,7 +23,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   try {
     const user = await getUserCookie({ req, res });
 
-    if (!user || !user.admin || !user._id) {
+    if (!user) {
       return {
         redirect: {
           destination: "/",
@@ -32,11 +32,11 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       };
     }
 
-    const ticketsData = await TicketAPI.getAllTickets(user._id);
+    const ticketsData = await TicketAPI.getUserTickets(user._id);
 
     return { props: { tickets: ticketsData, user } };
   } catch (error) {
-    console.error("Error fetching tickets:", error);
+    console.error("Error fetching user", error);
     return {
       redirect: {
         destination: "/",

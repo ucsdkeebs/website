@@ -75,6 +75,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                   Admin
                 </Link>
               )}
+              <Link className={styles.link} href="/profile">
               <div className={styles.user}>
                 <Image
                   src={ProfileIcon}
@@ -84,6 +85,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 ></Image>
                 <span className={styles.username}>{user.username}</span>
               </div>
+              </Link>
               <Button onClick={handleLogOut}>Log Out</Button>
             </div>
           ) : (

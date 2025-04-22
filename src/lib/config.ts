@@ -20,7 +20,8 @@ const config = {
       },
       ticket: {
         checkinTicket: "/tickets/check-in",
-        getAllTickets: "/tickets/all"
+        getAllTickets: "/tickets/all",
+        getUserTicket: "/tickets/"
       }
     },
   },
