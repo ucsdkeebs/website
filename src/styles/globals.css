@@ -34,7 +34,8 @@ body {
 button,
 input,
 select,
-label {
+label,
+a {
   font-family: "Libre Franklin", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 1.125rem;
@@ -107,16 +108,16 @@ p {
   body {
     font-size: 80%;
   } */
-   h1 {
+  h1 {
     font-size: 2rem;
-   }
-   h2 {
+  }
+  h2 {
     font-size: 1.75rem;
-   }
-   h3 {
+  }
+  h3 {
     font-size: 1.25rem;
-   }
-   p {
+  }
+  p {
     font-size: 1rem;
-   }
+  }
 }

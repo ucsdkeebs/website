@@ -1,5 +1,6 @@
 import EventHero from "@/sections/EventHero";
 import UpcomingEvents from "@/sections/UpcomingEvents";
+import Banner from "@/components/Banner";
 import { EventObject } from "@/lib/types/enum";
 import { EventAPI } from "@/lib/api";
 import { GetServerSideProps } from "next";
@@ -16,6 +17,7 @@ interface EventsProps {
 export default function Events({ events, loggedIn, user }: EventsProps) {
   return (
     <main className={styles.main}>
+            <Banner/>
       <EventHero />
       <UpcomingEvents events={events} loggedIn={loggedIn} user={user} />
     </main>
