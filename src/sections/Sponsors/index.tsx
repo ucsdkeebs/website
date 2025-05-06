@@ -3,11 +3,16 @@ import styles from "./style.module.css";
 
 const Sponsors: React.FC = () => {
   const images: string[] = [
-    "/assets/sponsors/sponsor1.png",
     "/assets/sponsors/sponsor2.png",
-    "/assets/sponsors/sponsor3.png",
-    "/assets/sponsors/sponsor4.png",
-    "/assets/sponsors/sponsor5.png",
+    "/assets/sponsors/sponsor7.png",
+    "/assets/sponsors/sponsor9.png",
+    "/assets/sponsors/sponsor10.png",
+    "/assets/sponsors/sponsor11.png",
+    "/assets/sponsors/sponsor12.png",
+    "/assets/sponsors/sponsor13.png",
+    "/assets/sponsors/sponsor14.png",
+    "/assets/sponsors/sponsor17.png",
+
   ];
   return (
     <div className={styles.container}>

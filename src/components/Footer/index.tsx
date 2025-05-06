@@ -1,12 +1,44 @@
 import Image from "next/image";
-import Link from 'next/link';
+import Link from "next/link";
 import styles from "./style.module.css";
-import TitleHeader from "@/components/TitleHeader";
+import Discord from "../../../public/assets/discord.svg";
+import Tiktok from "../../../public/assets/tiktok.svg";
+import Instagram from "../../../public/assets/instagram.svg";
+import LinkedIn from "../../../public/assets/linkedin.svg";
 
 const Footer: React.FC = () => {
   return (
     <div className={styles.footer}>
-        <TitleHeader title="Stay Connected!" />
+      <div className={styles.contactInfo}>
+        <h3>Contact Us</h3>
+        <div className={styles.iconDiv}>
+          <Link
+            href="https://www.instagram.com/ucsdkeebs"
+            className={styles.link}
+          >
+            <Image className={styles.icon} src={Instagram} alt="Instagram" />
+            <p>Instagram</p>
+          </Link>
+          <Link href="https://discord.gg/KPVSVhPD" className={styles.link}>
+            <Image className={styles.icon} src={Discord} alt="Discord" />
+            <p>Discord</p>
+          </Link>
+          <Link
+            href="https://www.tiktok.com/@ucsdkeebs"
+            className={styles.link}
+          >
+            <Image className={styles.icon} src={Tiktok} alt="Tiktok" />
+            <p>Tiktok</p>
+          </Link>
+          <Link
+            href="https://www.linkedin.com/company/keyboard-club-uc-san-diego/"
+            className={styles.link}
+          >
+            <Image className={styles.icon} src={LinkedIn} alt="LinkedIn" />
+            <p>LinkedIn</p>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
