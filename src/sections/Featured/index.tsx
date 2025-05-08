@@ -27,13 +27,24 @@ const featuredInfo = [
 
 const Featured: React.FC = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id="involved">
       <h1>How do I get involved?</h1>
       <div className={styles.cards}>
         {featuredInfo.map((activity) => (
           <FeaturedCard key={activity.id} activity={activity} />
         ))}
       </div>
+
+        <div className={styles.carousel}>
+          {featuredInfo.map((activity, index) => (
+            <div
+              key={activity.id}
+              className={styles.slide}
+            >
+              <FeaturedCard activity={activity} />
+            </div>
+          ))}
+        </div>
     </div>
   );
 };

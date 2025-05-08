@@ -23,7 +23,6 @@ const About: React.FC = () => {
           people can make friends based on their shared interest in keebs.We are
           also a resource for asking keyboard questions and requesting build
           services."
-            buttonText="About Us"
             variant="secondary"
           />
         </div>
@@ -38,6 +37,7 @@ const About: React.FC = () => {
             We also host social events such as GBMs, boba socials, and game room socials. Additionally, we organize group buys for club or keyboard-related merchandise designed by our artists.`}
             buttonText="View Events"
             variant="secondary"
+            buttonHref="/events"
           />
         </div>
         <div

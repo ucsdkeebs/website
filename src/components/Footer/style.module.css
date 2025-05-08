@@ -1,10 +1,44 @@
 .footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-grey);
+}
+
+.iconDiv {
+  display: flex;
+  gap: 1rem;
+}
+
+.icon {
+  padding: 0 0.5rem;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.link p {
+  font-size: 1.3rem;
+  color: white;
+}
+
+.contactInfo {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    height: 10vh;
-    padding: 0rem 2rem;
-    background: var(--primary-light);
+    gap: 1.5rem;
+    padding: 3rem;
+}
+
+.contactInfo h3 {
+  color: white;
+}
+
+@media screen and (max-width: 600px) {
+  .link p {
+    display: none;
   }
-  
-  
+}

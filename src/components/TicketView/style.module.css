@@ -1,0 +1,117 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+  word-break: break-all;
+}
+
+.table th {
+  background-color: #f3f3f3;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.filters input {
+    border-radius: 8px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    background-color: #FBF9FB;
+}
+
+.filters input:focus, .filters input:focus-visible {
+  border: none;
+  outline: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.downloadIcon {
+  width: 40px;
+  height: auto;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 870px) {
+  .container {
+    width: 100%;
+  }
+
+  .table,
+  .table thead,
+  .table tbody,
+  .table th,
+  .table td,
+  .table tr {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table tbody {
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .table tr {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0.5rem;
+    background: #fff;
+  }
+
+  .table td {
+    flex-direction: row;
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1px solid #eee;
+    font-size: 1rem;
+  }
+
+  .table td:last-child {
+    border-bottom: none;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    margin-right: 1rem;
+    text-transform: capitalize;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+
+  .downloadIcon {
+    display: none;
+  }
+}

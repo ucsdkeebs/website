@@ -1,13 +1,113 @@
 import Image from "next/image";
-import Link from 'next/link';
+import Link from "next/link";
+import Button from "../Button";
 import logo from "../../../public/assets/logo.png";
+import ProfileIcon from "../../../public/assets/icons/profile.png";
+import { deleteCookie } from "cookies-next";
+import { PublicProfile } from "@/lib/types/apiResponses";
+import { useRouter } from "next/router";
 import styles from "./style.module.css";
+import { useState } from "react";
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  user?: PublicProfile;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ user }) => {
+  const router = useRouter();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleLogOut = () => {
+    deleteCookie("USER");
+    deleteCookie("ACCESS_TOKEN");
+    router.push("/login");
+  };
+
   return (
     <div className={styles.navbar}>
-        <Link href="/"><Image className={styles.logo} src={logo} alt="logo"/></Link>
-        <Link href="/login" className={styles.button}>Log in</Link>
+      <Link href="/" className={styles.logolink}>
+        <Image className={styles.logo} src={logo} alt="logo" />
+      </Link>
+      <button
+        className={`${styles.menubutton} ${
+          isMenuOpen ? styles.closebutton : styles.openbutton
+        }`}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div className={styles.navcontainer}>
+        <div className={`${styles.navlinks} ${isMenuOpen ? styles.show : ""}`}>
+          <Link href="/" className={styles.logolink2}>
+            <Image className={styles.logo} src={logo} alt="logo" />
+          </Link>
+          <Link
+            href="/"
+            className={styles.link}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            About
+          </Link>
+          <Link
+            href="/events"
+            className={styles.link}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Events
+          </Link>
+          <Link
+            href="/#contact"
+            className={styles.link}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Contact
+          </Link>
+          {user ? (
+            <div className={styles.profileContainer}>
+              {user.admin && (
+                <Link
+                  href="/admin"
+                  className={styles.link}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Admin
+                </Link>
+              )}
+              <Link className={styles.link} href="/profile">
+              <div className={styles.user}>
+                <Image
+                  src={ProfileIcon}
+                  width={40}
+                  height={40}
+                  alt="Profile Icon"
+                ></Image>
+                <span className={styles.username}>{user.username}</span>
+              </div>
+              </Link>
+              <Button onClick={handleLogOut}>Log Out</Button>
+            </div>
+          ) : (
+            <Link
+              href="/login"
+              className={`${styles.button} ${styles.button2}`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Join
+            </Link>
+          )}
+        </div>
+        {!user && (
+          <Link
+            href="/login"
+            className={styles.button}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Join
+          </Link>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,0 +1,33 @@
+.button {
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1.125rem;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+
+.primary {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.secondary {
+  background-color: var(--white);
+  color: var(--black);
+  border: 1px solid var(--black);
+}
+
+.tertiary, .button:disabled {
+  background-color: var(--grey);
+  color: var(--black);
+  opacity: 40%;
+}
+
+.button:disabled {
+  cursor: default;
+}
