@@ -12,7 +12,11 @@ const Sponsors: React.FC = () => {
     "/assets/sponsors/sponsor13.png",
     "/assets/sponsors/sponsor14.png",
     "/assets/sponsors/sponsor17.png",
-
+    "/assets/sponsors/sponsor18.png",
+    "/assets/sponsors/sponsor19.png",
+    "/assets/sponsors/sponsor20.png",
+    "/assets/sponsors/sponsor21.png",
+    "/assets/sponsors/sponsor22.png"
   ];
   return (
     <div className={styles.container}>
