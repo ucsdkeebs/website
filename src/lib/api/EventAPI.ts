@@ -3,6 +3,7 @@ import { EventObject, TicketData } from "../types/enum";
 import { EventCreation } from "../types/apiRequests";
 import { RsvpResponse } from "../types/apiResponses";
 import axios from "axios";
+import { toast } from 'react-toastify';
 
 export const getEvents = async (): Promise<EventObject[]> => {
   const requestUrl = `${config.api.baseUrl}${config.api.endpoints.event.getEvents}`;
@@ -19,8 +20,10 @@ export const createEvent = async (
     return response.data;
   } catch (error: any) {
     if (error.response) {
+      toast.error("Event creation failed");
       throw new Error(error.response.data.error || "Event creation failed");
     } else {
+      toast.error("Network error or failed to reach server")
       throw new Error("Network error or failed to reach server");
     }
   }

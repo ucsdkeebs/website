@@ -70,20 +70,27 @@ const EventModal: React.FC<EventModalProps> = ({
         raffle_slot: 1,
         expected_spend: "$0",
       }));
-      if (user._id) {
-        const response = await EventAPI.rsvpToEvent(
-          event._id,
-          user._id,
-          updatedTicketData
-        );
-        toast.success("RSVP Successful!");
-        onClose();
-        setTimeout(() => {
-          router.reload();
-        }, 1500);
+      if (ticketData.length >= event.max_rsvps) {
+          toast.error("Event is full");
+          throw new Error("Event is full");
+      }
+      else {
+        if (user._id) {
+          const response = await EventAPI.rsvpToEvent(
+            event._id,
+            user._id,
+            updatedTicketData
+          );
+          toast.success("RSVP Successful!");
+          onClose();
+          setTimeout(() => {
+            router.reload();
+          }, 1500);
+        }
       }
     } catch (error: any) {
       console.error("Error RSVP-ing to event", error.message);
+      toast.error("Error RSVP-ing to event");
     }
   };
 

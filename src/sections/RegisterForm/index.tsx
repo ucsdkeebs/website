@@ -62,6 +62,7 @@ const RegisterForm = ({ email, token }: RegisterProps) => {
       router.push("/events");
     } catch (error) {
       console.error("Error creating user:", error);
+      toast.error("Error creating user");
     }
   };
 
