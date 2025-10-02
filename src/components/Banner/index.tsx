@@ -6,7 +6,7 @@ const Banner: React.FC = () => {
     <div className={styles.container}>
       <video
         className={styles.video}
-        src="/assets/events/858marquee.mp4"
+        src="/assets/events/OAKmarquee.mp4"
         autoPlay
         muted
         loop
@@ -18,7 +18,7 @@ const Banner: React.FC = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Looking for 858 Keeb Market tickets? Click here!
+        Looking for Once Upon A Keeb tickets? Click here!
       </Link>
     </div>
   );
