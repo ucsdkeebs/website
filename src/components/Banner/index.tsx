@@ -6,7 +6,7 @@ const Banner: React.FC = () => {
     <div className={styles.container}>
       <video
         className={styles.video}
-        src="/assets/events/OAUKmarquee.mp4"
+        src="/assets/events/OUAKmarquee.mp4"
         autoPlay
         muted
         loop
