@@ -4,13 +4,9 @@ import styles from "./style.module.css";
 const Banner: React.FC = () => {
   return (
     <div className={styles.container}>
-      <video
+      <img
         className={styles.video}
-        src="/assets/events/OUAKmarquee.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
+        src="/assets/events/hello_keebs_cropped.png"
       />
       <Link
       className={styles.link}
@@ -18,7 +14,7 @@ const Banner: React.FC = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Looking for Once Upon A Keeb tickets? Click here!
+        Looking for Hello Keebs and Friends tickets? Click here!
       </Link>
     </div>
   );
