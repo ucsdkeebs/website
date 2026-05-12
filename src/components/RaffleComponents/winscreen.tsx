@@ -1,6 +1,5 @@
 // import React, { useState } from 'react';
 import Modal from 'react-modal';
-import kwibCelebration from '/assets/raffle/kwibs_modal.png';
 import Image from 'next/image';
 
 // Make sure to set appElement to handle accessibility
@@ -37,9 +36,9 @@ const Winscreen = ({ isOpen, closeModal, modalText, remove }: WinscreenProps) =>
       <div className="modal">
         <span className="close" onClick={closeModal}>&times;</span>
         <div className="modal-content">
-          <Image className="modal_logo" id="modal_left" src={kwibCelebration} alt="modal_left"/>
+          <Image className="modal_logo" id="modal_left" src='/assets/raffle/kwibs_modal.png' alt="modal_left"/>
           <p className="winner">{modalText}</p>
-          <Image className="modal_logo" id="modal_right" src={kwibCelebration} alt="modal_right"/>
+          <Image className="modal_logo" id="modal_right" src='/assets/raffle/kwibs_modal.png' alt="modal_right"/>
         </div>
         <div className="ok">
           <button className="winButton" onClick={remove}>Okay</button>

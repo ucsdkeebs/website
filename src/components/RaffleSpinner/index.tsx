@@ -6,9 +6,6 @@ import { sleep } from "@/lib/utils/raffleHelper";
 import { TicketTailorAPI } from "@/lib/api";
 import { PublicProfile } from "@/lib/types/apiResponses";
 import { TicketTailorData } from "@/lib/types/enum";
-import animationStatic from "/assets/raffle/Animation_Frames/kwibs_0000.png";
-import animation from "/assets/raffle/kwibs.gif";
-import raffleFrame from "/assets/raffle/Raffle_Frame.png";
 
 //importing components
 import { Slot } from "@/components/RaffleComponents/slot";
@@ -180,8 +177,8 @@ export default function RaffleSpinner({ admin }: RaffleSpinnerProps) {
           <div className ="Animation">
             <AnimationRenderer
                 onAnimate={handleAnimationClick}
-                staticSrc={animationStatic}
-                gifSrc={animation}
+                staticSrc="/assets/raffle/Animation_Frames/kwibs_0000.png"
+                gifSrc="/assets/raffle/kwibs.gif"
                 animationDuration={6480} // Example: 5000 milliseconds for a 5-second GIF
                 isButtonDisabled={isButtonDisabled}
                 setIsButtonDisabled={setIsButtonDisabled}
@@ -189,7 +186,7 @@ export default function RaffleSpinner({ admin }: RaffleSpinnerProps) {
           </div>
     
           <div className = "frame">
-              <Image id="slotframe" src={raffleFrame} alt="Raffle Frame" />
+              <Image id="slotframe" src="/assets/raffle/Raffle_Frame.png" alt="Raffle Frame" />
               <div className="raffleBody">
                 {numbers.map((number) => (
                   <Slot key={number} value={slotValues[number]} slotNumber={number} />

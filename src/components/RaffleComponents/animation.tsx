@@ -4,8 +4,8 @@ import { StaticImageData } from 'next/image';
 
 interface AnimationRendererProps {
     onAnimate: () => void;
-    staticSrc: StaticImageData;
-    gifSrc: StaticImageData;
+    staticSrc: string;
+    gifSrc: string;
     animationDuration: number;
     isButtonDisabled: boolean;
     setIsButtonDisabled: (disabled: boolean) => void;
