@@ -7,8 +7,8 @@ import { TicketTailorAPI } from "@/lib/api";
 import { PublicProfile } from "@/lib/types/apiResponses";
 import { TicketTailorData } from "@/lib/types/enum";
 import animationStatic from "/assets/raffle/Animation_Frames/kwibs_0000.png";
-import animation from "/assets/raffle/img/kwibs.gif";
-import raffleFrame from "/assets/raffle/img/Raffle_Frame.png";
+import animation from "/assets/raffle/kwibs.gif";
+import raffleFrame from "/assets/raffle/Raffle_Frame.png";
 
 //importing components
 import { Slot } from "@/components/RaffleComponents/slot";
