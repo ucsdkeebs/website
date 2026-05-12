@@ -22,6 +22,13 @@ const config = {
         checkinTicket: "/tickets/check-in",
         getAllTickets: "/tickets/all",
         getUserTicket: "/tickets/"
+      },
+      ticketTailor: {
+        updateWinner: "/ticketTailor/update-winner",
+        getCheckedIn: "/ticketTailor/get-checked-in",
+        getCheckedInNoWin: "/ticketTailor/get-checked-in-no-win"
+      },
+      ticketTailorWebhook: { //dont think i need this since its only called by outside the website   
       }
     },
   },

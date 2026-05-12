@@ -1,4 +1,4 @@
-import { TicketData } from "./enum";
+import { TicketData, TicketTailorData } from "./enum";
 
 export interface PublicProfile {
   _id?: string;
@@ -34,4 +34,13 @@ export interface CheckInResponse {
 
 export interface GetAllTicketsResponse {
   tickets: TicketData[];
+}
+
+// Ticket Tailor Stuff
+export interface GetCheckedIn {
+  tickets: TicketTailorData[];
+}
+
+export interface GetCheckedInNonWin {
+  tickets: TicketTailorData[];
 }
