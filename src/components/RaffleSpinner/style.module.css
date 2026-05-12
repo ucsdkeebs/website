@@ -1,0 +1,277 @@
+html * {
+    /* font-family: Arial, sans-serif !important; !important means that font-family can't be overwritten */
+    font-family: NikkyouSans;
+  }
+  
+  html {
+    overflow-y: scroll;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    background-image: url("./img/raffle_bg.png");
+  }
+  
+  @font-face {
+    font-family: NikkyouSans;
+    src: url(NikkyouSans-mLKax.ttf);
+  }
+  
+  /* raffle body  */
+  .raffle {
+    display: grid;
+    grid-template-columns: 40vw 60vw;
+    grid-template-rows: 50vh 50vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+  
+  .grid-item {
+    position: relative; /* If centering within a specific item */
+  }
+  
+  .raffleBody {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    width: 25vw; 
+    height: auto;
+    background-color: #fffede;
+  }
+  
+  /* Slots*/
+  .slot {
+    width: 100%;
+    height: 4vw;
+    border: 3px solid #471E20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    background-color: #fffede;
+  }
+  
+  /* #slot0 {
+    clip-path: polygon(0 50%, 0 100%, 100% 100%, 100% 50%);
+  } */
+  
+  #slot9 {
+    clip-path: polygon(0 0, 0 70%, 100% 70%, 100% 0);
+    border-color: #fffede;
+    color: #fffede;
+    border-top: 3px solid #471E20;
+  }
+  
+  /* overlay  */
+  .frame {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    flex: 1;
+    bottom:0;
+    right: 14%;
+    /*max-width: 45%;*/
+    /*background-color: #f0f0f0;*/
+  }
+  
+  #slotframe {
+    width: 30vw; 
+    height: auto; /* This ensures the image height scales with its width */
+    object-fit: cover; /* This ensures the image maintains its aspect ratio */
+    position: absolute;
+    bottom:0;
+  }
+  
+  /*animation*/
+  .Animation {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: left;
+    position: absolute;
+    flex: 1;
+    /* margin-top: 45vh; */
+    bottom:0;
+    left:0;
+  }
+  
+  #animation_frame {
+    max-width: 45%;
+    max-height: auto;
+    /*position: relative;*/
+  }
+  
+  .Animation:hover {
+    border-color: black;
+    border-radius: 10px;
+  }
+  
+  .modal {
+    z-index: 10;
+    align-items: center;
+    overflow:hidden;
+  }
+  
+  .modal * {
+    z-index: inherit;
+  }
+  
+  .modal-content {
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: #c5f3da;
+    margin: 2vh;
+    padding: 3%;
+    border: 1px solid #888;
+    width: 90%;
+    height: 100%;
+    z-index: 2;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+  
+  .winner {
+    text-align: center;
+    font-size: 2.5rem;
+    max-width: 60%;
+    height: 100%;
+    margin: 0 auto;
+  }
+  
+  .modal_logo {
+    max-width:20%
+  }
+  
+  #modal_right {
+    transform: scaleX(-1);
+  }
+  
+  .close {
+    color: #fffede;
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: Arial;
+  }
+  
+  .close:hover,
+  .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+  }
+  .ok {
+    display:flex;
+    align-items:center;
+    justify-content: center;
+  }
+  
+  .winButton {
+    display: block; /*change to block if it's not within a flex container*/
+    margin: auto ;
+    align-self: center;
+    background-color: #fffede;
+    background-image: none;
+    background-position: 0 90%;
+    background-repeat: repeat no-repeat;
+    background-size: 4px 3px;
+    border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+    box-sizing: border-box;
+    color: #41403e;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 23px;
+    outline: none;
+    padding: .75rem;
+    text-decoration: none;
+    transition: all 235ms ease-in-out;
+    border-bottom-left-radius: 15px 255px;
+    border-bottom-right-radius: 225px 15px;
+    border-top-left-radius: 255px 15px;
+    border-top-right-radius: 15px 225px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .winButton:hover {
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+    transform: translate3d(0, 2px, 0);
+  }
+  
+  .winButton:focus {
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+  }
+  
+  .raffleSlotSign {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  .rectangleWrapper {
+    background-color: #86dccb; 
+    padding: 1.5vw; 
+    text-align: center;
+    display: inline-block;
+    margin-top: 1vw; 
+    border-radius: 1vw;
+    width: 20vw;
+  }
+  
+  .line {
+    height: 2px;
+    background-color: black; 
+  }
+  
+  .emptyLine {
+    height: 2rem; 
+    background-color: #fffede; 
+  }
+  
+  .select {
+    -webkit-appearance: none;
+    -moz-appearance: none; 
+    appearance: none;
+    background-color: #fffede; 
+    padding: 0.5vw;
+    border: 1px solid #cccccc; 
+    font-size: 1.5rem;
+    border-radius: 1vw;
+    border-color: #fffede;
+    text-align: center;
+  }
+  
+  .select:disabled {
+    color: black;
+  }
+  
+  .selectWrapper {
+    background-color: #fffede;
+  }
+  
+  #titleTag {
+    font-size: 2.25rem;
+    padding-bottom: 1.5vw;
+  }

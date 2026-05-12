@@ -6,9 +6,9 @@ import { sleep } from "@/lib/utils/raffleHelper";
 import { TicketTailorAPI } from "@/lib/api";
 import { PublicProfile } from "@/lib/types/apiResponses";
 import { TicketTailorData } from "@/lib/types/enum";
-import animationStatic from "./public/assets/raffle/Animation_Frames/kwibs_0000.png";
-import animation from "./public/assets/raffle/img/kwibs.gif";
-import raffleFrame from "./public/assets/raffle/img/Raffle_Frame.png";
+import animationStatic from "/assets/raffle/Animation_Frames/kwibs_0000.png";
+import animation from "/assets/raffle/img/kwibs.gif";
+import raffleFrame from "/assets/raffle/img/Raffle_Frame.png";
 
 //importing components
 import { Slot } from "@/components/RaffleComponents/slot";

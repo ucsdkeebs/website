@@ -1,6 +1,6 @@
 // import React, { useState } from 'react';
 import Modal from 'react-modal';
-import kwibCelebration from '../../../assets/raffle/img/kwibs_modal.png';
+import kwibCelebration from '/assets/raffle/img/kwibs_modal.png';
 import Image from 'next/image';
 
 // Make sure to set appElement to handle accessibility
