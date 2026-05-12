@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import Image from 'next/image';
 
 // Make sure to set appElement to handle accessibility
-Modal.setAppElement('#root');
+Modal.setAppElement('#__next');
 
 const customStyles = {
   content: {
