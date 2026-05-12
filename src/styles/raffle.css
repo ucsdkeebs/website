@@ -1,29 +1,4 @@
-html * {
-    /* font-family: Arial, sans-serif !important; !important means that font-family can't be overwritten */
-    font-family: NikkyouSans;
-  }
-  
-  html {
-    overflow-y: scroll;
-  }
-  
-  body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
-    background-image: url("/assets/raffle_bg.png");
-  }
-  
-  @font-face {
-    font-family: NikkyouSans;
-    src: url(NikkyouSans-mLKax.ttf);
-  }
-  
-  /* raffle body  */
+/* raffle body  */
   .raffle {
     display: grid;
     grid-template-columns: 40vw 60vw;
