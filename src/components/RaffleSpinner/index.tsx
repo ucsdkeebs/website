@@ -59,6 +59,7 @@ export default function RaffleSpinner({ admin }: RaffleSpinnerProps) {
       console.log('fetching!');
   
       try {
+        console.log(admin._id);
         const response = await TicketTailorAPI.getCheckedInTicketsNoWin(admin._id as string);
 
         const info = await parseData(response);
