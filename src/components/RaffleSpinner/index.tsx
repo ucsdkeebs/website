@@ -59,8 +59,7 @@ export default function RaffleSpinner({ admin }: RaffleSpinnerProps) {
       console.log('fetching!');
   
       try {
-        console.log(admin._id);
-        const response = await TicketTailorAPI.getCheckedInTicketsNoWin(admin._id as string);
+        const response = await TicketTailorAPI.getCheckedInTicketsNoWin();
 
         const info = await parseData(response);
         console.log(info);
@@ -77,7 +76,7 @@ export default function RaffleSpinner({ admin }: RaffleSpinnerProps) {
         console.log('updating data!');
 
         try {
-            const response = await TicketTailorAPI.updateWinner(id, admin._id as string);
+            const response = await TicketTailorAPI.updateWinner(id);
         } catch (error) {
             console.error('Error updating the data!', error);
         }      

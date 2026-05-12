@@ -4,11 +4,9 @@ import axios from "axios";
 import { TicketTailorData } from "../types/enum";
 
 // Get Checked In
-export const getCheckedInTickets = async (
-  adminId: string
-): Promise<GetCheckedIn> => {
+export const getCheckedInTickets = async (): Promise<GetCheckedIn> => {
   try {
-    const requestUrl = `${config.api.baseUrl}${config.api.endpoints.ticketTailor.getCheckedIn}/${adminId}`;
+    const requestUrl = `${config.api.baseUrl}${config.api.endpoints.ticketTailor.getCheckedIn}`;
     const response = await axios.post<GetCheckedIn>(requestUrl);
 
     return response.data;
@@ -22,11 +20,9 @@ export const getCheckedInTickets = async (
 };
 
 // Get all tickets that havent won
-export const getCheckedInTicketsNoWin = async (
-  adminId: string
-): Promise<TicketTailorData[]> => {
+export const getCheckedInTicketsNoWin = async (): Promise<TicketTailorData[]> => {
   try {
-    const requestUrl = `${config.api.baseUrl}${config.api.endpoints.ticketTailor.getCheckedInNoWin}/${adminId}`;
+    const requestUrl = `${config.api.baseUrl}${config.api.endpoints.ticketTailor.getCheckedInNoWin}`;
     const response = await axios.get<GetCheckedInNonWin>(requestUrl);
 
     return response.data.tickets;
