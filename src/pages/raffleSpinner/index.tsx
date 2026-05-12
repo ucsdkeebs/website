@@ -11,7 +11,7 @@ interface RaffleSpinnerProps {
 //user is here so that we can call Admin API stuff from the raffle spinner
 export default function Admin({ user }: RaffleSpinnerProps) {
   return (
-    <main className={styles.main}>
+    <main className={styles.rafflePageWrapper}>
       <RaffleSpinner admin={user} />
     </main>
   );

@@ -41,7 +41,8 @@ export const getCheckedInTicketsNoWin = async (
 
 // Updates ticket to show as a winner
 export const updateWinner = async (
-  ticketTailorId: string
+  ticketTailorId: string,
+  adminId: string
 ): Promise<null> => {
   try {
     const requestUrl = `${config.api.baseUrl}${config.api.endpoints.ticketTailor.updateWinner}/${ticketTailorId}`;
