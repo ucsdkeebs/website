@@ -1,3 +1,8 @@
+@font-face {
+  font-family: NikkyouSans;
+  src: "NikkyouSans-mLKax.ttf";
+}
+
 /* raffle body  */
   .raffle {
     display: grid;
