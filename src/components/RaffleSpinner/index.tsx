@@ -188,8 +188,8 @@ export default function RaffleSpinner({ admin }: RaffleSpinnerProps) {
           <div className = "frame">
               <Image id="slotframe" src="/assets/raffle/Raffle_Frame.png" alt="Raffle Frame" />
               <div className="raffleBody">
-                {numbers.map((number) => (
-                  <Slot key={number} value={slotValues[number]} slotNumber={number} />
+                {numbers.map((num) => (
+                  <Slot key={num} value={slotValues[num]} slotNumber={num} />
                 ))}
             </div>       
           </div> 

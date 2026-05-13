@@ -12,6 +12,7 @@
     align-items: center;
     text-align: center;
     position: relative;
+    font-family: NikkyouSans;
   }
   
   .grid-item {
@@ -28,6 +29,7 @@
     z-index: -1;
     width: 25vw; 
     height: auto;
+    font-family: NikkyouSans;
     background-color: #fffede;
   }
   
@@ -41,6 +43,7 @@
     align-items: center;
     font-size: 1.2rem;
     background-color: #fffede;
+    font-family: NikkyouSans;
   }
   
   /* #slot0 {
@@ -126,6 +129,7 @@
     z-index: 2;
     text-align: center;
     flex-wrap: wrap;
+    font-family: NikkyouSans;
   }
   
   .winner {
@@ -194,6 +198,7 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+    font-family: NikkyouSans;
   }
   
   .winButton:hover {
