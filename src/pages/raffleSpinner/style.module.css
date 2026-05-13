@@ -4,7 +4,7 @@
     align-items: center;
     min-height: 100vh;
     background-color: #f0f0f0;
-    background-image: "/assets/raffle/raffle_bg.png";
+    background-image: url("/assets/raffle/raffle_bg.png");
     font-family: NikkyouSans;
     overflow-y: scroll;
   }

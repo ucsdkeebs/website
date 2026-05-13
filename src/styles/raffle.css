@@ -1,6 +1,6 @@
 @font-face {
   font-family: NikkyouSans;
-  src: "NikkyouSans-mLKax.ttf";
+  src: url("NikkyouSans-mLKax.ttf");
 }
 
 /* raffle body  */
