@@ -1,13 +1,13 @@
 import config from "../config";
 import { GetCheckedIn, GetCheckedInNonWin } from "../types/apiResponses";
-import axios from "axios";
 import { TicketTailorData } from "../types/enum";
+import axiosInstance from './axiosInstance';
 
 // Get Checked In
 export const getCheckedInTickets = async (): Promise<GetCheckedIn> => {
   try {
     const requestUrl = `${config.api.baseUrl}${config.api.endpoints.ticketTailor.getCheckedIn}`;
-    const response = await axios.post<GetCheckedIn>(requestUrl);
+    const response = await axiosInstance.post<GetCheckedIn>(requestUrl);
 
     return response.data;
   } catch (error: any) {
@@ -23,7 +23,7 @@ export const getCheckedInTickets = async (): Promise<GetCheckedIn> => {
 export const getCheckedInTicketsNoWin = async (): Promise<TicketTailorData[]> => {
   try {
     const requestUrl = `${config.api.baseUrl}${config.api.endpoints.ticketTailor.getCheckedInNoWin}`;
-    const response = await axios.get<GetCheckedInNonWin>(requestUrl);
+    const response = await axiosInstance.get<GetCheckedInNonWin>(requestUrl);
 
     return response.data.tickets;
   } catch (error: any) {
@@ -41,7 +41,7 @@ export const updateWinner = async (
 ): Promise<null> => {
   try {
     const requestUrl = `${config.api.baseUrl}${config.api.endpoints.ticketTailor.updateWinner}/${ticketTailorId}`;
-    const response = await axios.post<null>(requestUrl);
+    const response = await axiosInstance.post<null>(requestUrl);
 
     return null;
   } catch (error: any) {

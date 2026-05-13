@@ -30,7 +30,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
           destination: "/",
           permanent: false,
         },
-      };
+      };  
     }
 
     return {
