@@ -3,10 +3,11 @@ import { EventObject, TicketData } from "../types/enum";
 import { EventCreation } from "../types/apiRequests";
 import { RsvpResponse } from "../types/apiResponses";
 import axios from "axios";
+import axiosInstance from './axiosInstance';
 
 export const getEvents = async (): Promise<EventObject[]> => {
   const requestUrl = `${config.api.baseUrl}${config.api.endpoints.event.getEvents}`;
-  const response = await axios.get<EventObject[]>(requestUrl);
+  const response = await axiosInstance.get<EventObject[]>(requestUrl);
   return response.data;
 };
 
@@ -15,7 +16,7 @@ export const createEvent = async (
 ): Promise<EventObject> => {
   try {
     const requestUrl = `${config.api.baseUrl}${config.api.endpoints.event.createEvent}`;
-    const response = await axios.post<EventObject>(requestUrl, event);
+    const response = await axiosInstance.post<EventObject>(requestUrl, event);
     return response.data;
   } catch (error: any) {
     if (error.response) {
@@ -63,7 +64,7 @@ export const getUserTicketsForEvent = async (
       eventId,
     };
 
-    const response = await axios.post<{ tickets: TicketData[] }>(
+    const response = await axiosInstance.post<{ tickets: TicketData[] }>(
       requestUrl,
       body
     );
