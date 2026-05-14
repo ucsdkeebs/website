@@ -248,6 +248,7 @@
     border-radius: 1vw;
     border-color: #fffede;
     text-align: center;
+    font-family: NikkyouSans;
   }
   
   .select:disabled {
