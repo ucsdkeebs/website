@@ -214,6 +214,7 @@
   .raffleSlotSign {
     grid-column: 1;
     grid-row: 1;
+    font-family: NikkyouSans;
   }
   
   .rectangleWrapper {
