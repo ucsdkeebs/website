@@ -35,6 +35,22 @@ export const getCheckedInTicketsNoWin = async (): Promise<TicketTailorData[]> =>
   }
 };
 
+// Get tickets by raffle slot (no win)
+export const getCheckedInByRaffleSlot = async (requestBody: {raffleSlot: number}): Promise<TicketTailorData[]> => {
+  try {
+    const requestUrl = `${config.api.baseUrl}${config.api.endpoints.ticketTailor.getCheckedInByRaffleSlot}`;
+    const response = await axiosInstance.get<GetCheckedInNonWin>(requestUrl);
+
+    return response.data.tickets;
+  } catch (error: any) {
+    if (error.response) {
+      throw new Error(error.response.data.error || "Failed to fetch tickets");
+    } else {
+      throw new Error("Network error or failed to reach server");
+    }
+  }
+};
+
 // Updates ticket to show as a winner
 export const updateWinner = async (
   ticketTailorId: string,

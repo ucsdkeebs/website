@@ -54,17 +54,56 @@ export default function RaffleSpinner({ admin }: RaffleSpinnerProps) {
         ] as RaffleEntry);
     };
   
-    //calls api to get the tickets from ticket tailor
+    // calls api to get the tickets from ticket tailor
+    // changed to reflect raffle slot
     const fetchData = async () => {
-      console.log('fetching!');
   
       try {
-        const response = await TicketTailorAPI.getCheckedInTicketsNoWin();
+        if (raffleSlot == 'I') {
+          console.log('fetching slot 1!');
+          const response = await TicketTailorAPI.getCheckedInByRaffleSlot({raffleSlot: 1});
 
-        const info = await parseData(response);
-        console.log(info);
-        setRaffle(info); 
-        return info;   
+          const info = await parseData(response);
+          console.log(info);
+          setRaffle(info); 
+          return info;  
+        }
+        if (raffleSlot == 'II') {
+          console.log('fetching slot 2!');
+          const response = await TicketTailorAPI.getCheckedInByRaffleSlot({raffleSlot: 2});
+
+          const info = await parseData(response);
+          console.log(info);
+          setRaffle(info); 
+          return info;
+        }
+        if (raffleSlot == 'III') {
+          console.log('fetching slot 3!');
+          const response = await TicketTailorAPI.getCheckedInByRaffleSlot({raffleSlot: 3});
+
+          const info = await parseData(response);
+          console.log(info);
+          setRaffle(info); 
+          return info;
+        }
+        if (raffleSlot == 'IV') {
+          console.log('fetching slot 4!');
+          const response = await TicketTailorAPI.getCheckedInByRaffleSlot({raffleSlot: 4});
+
+          const info = await parseData(response);
+          console.log(info);
+          setRaffle(info); 
+          return info;
+        }
+        else {
+          console.log('fetching all!');
+          const response = await TicketTailorAPI.getCheckedInTicketsNoWin();
+
+          const info = await parseData(response);
+          console.log(info);
+          setRaffle(info); 
+          return info;
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
         return [];
