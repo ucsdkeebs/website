@@ -178,7 +178,7 @@ export default function RaffleSpinner({ admin }: RaffleSpinnerProps) {
             <AnimationRenderer
                 onAnimate={handleAnimationClick}
                 staticSrc="/assets/raffle/Animation_Frames/kwibs_0000.png"
-                gifSrc="/assets/raffle/kwibs.gif"
+                gifSrc="/assets/raffle/shortened_kwibs.gif"
                 animationDuration={6480} // Example: 5000 milliseconds for a 5-second GIF
                 isButtonDisabled={isButtonDisabled}
                 setIsButtonDisabled={setIsButtonDisabled}
