@@ -10,8 +10,8 @@ const customStyles = {
     zIndex: 10
   },
   content: {
-    width: '50%', // Set the width to your desired value
-    margin: 'auto', // Center the modal horizontally
+    width: '50%', 
+    margin: 'auto',
     maxHeight: '35%', // Set the maximum height to avoid taking up the entire viewport
     overflow: 'hidden', // Enable vertical scrolling if needed
     backgroundColor: 'rgba(250, 229, 175, 1)',
