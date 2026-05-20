@@ -13,7 +13,8 @@ interface AnimationRendererProps {
 
 function AnimationRenderer({ onAnimate, staticSrc, gifSrc, animationDuration, isButtonDisabled, setIsButtonDisabled}: AnimationRendererProps) {
     const [imageSrc, setImageSrc] = useState(staticSrc);
-    const timeoutsRef = useRef([]);
+    const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+    const isAnimating = useRef(false);
 
     // Cleanup on unmount, gets rid of pending timeouts
     useEffect(() => {
@@ -22,20 +23,21 @@ function AnimationRenderer({ onAnimate, staticSrc, gifSrc, animationDuration, is
         };
     }, []);
 
+    const handleImageLoad = () => {
+        if (!isAnimating.current) return;
+        isAnimating.current = false;
+
+        const t1 = setTimeout(() => onAnimate(), 0); // starts immediately after GIF loads
+        const t2 = setTimeout(() => setImageSrc(staticSrc), animationDuration);
+        const t3 = setTimeout(() => setIsButtonDisabled(false), animationDuration + 1000);
+        timeoutsRef.current.push(t1, t2, t3);
+    };
+
     const handleImageClick = () => {
-        // checks to see if the button has been clicked to prevent double clicking
         if (isButtonDisabled) return;
-        // disables the button on click
         setIsButtonDisabled(true);
-        console.log('Starting spin animation');
-        setImageSrc(gifSrc); // Switch from static img to the GIF
-
-
-        
-        setTimeout(() =>  onAnimate(), 800);
-        // Set a timeout to switch back to the static image after the GIF's duration
-        setTimeout(() => setImageSrc(staticSrc), animationDuration);
-        setTimeout(() => setIsButtonDisabled(false), animationDuration + 1000); //adds 1000 just to have a small buffer for api to update      
+        isAnimating.current = true; 
+        setImageSrc(gifSrc); 
     };
 
     return (
@@ -44,6 +46,7 @@ function AnimationRenderer({ onAnimate, staticSrc, gifSrc, animationDuration, is
             src={imageSrc}
             alt="Animation"
             onClick={handleImageClick}
+            onLoad={handleImageLoad}
             style={{ cursor: !isButtonDisabled ? 'pointer':'not-allowed' }}
         />
     );

@@ -12,7 +12,7 @@ const customStyles = {
     maxHeight: '35%', // Set the maximum height to avoid taking up the entire viewport
     overflow: 'hidden', // Enable vertical scrolling if needed
     backgroundColor: 'rgba(250, 229, 175, 1)',
-    zIndex: 2,
+    zIndex: 10,
   },
 };
 
