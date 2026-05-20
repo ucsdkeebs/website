@@ -32,7 +32,7 @@ function AnimationRenderer({ onAnimate, staticSrc, gifSrc, animationDuration, is
         // requestAnimationFrame ensures the GIF src change has been painted
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
-                const t1 = setTimeout(() => onAnimate(), 0);
+                const t1 = setTimeout(() => onAnimate(), 800);
                 const t2 = setTimeout(() => setImageSrc(staticSrc), animationDuration);
                 const t3 = setTimeout(() => setIsButtonDisabled(false), animationDuration + 1000);
                 timeoutsRef.current.push(t1, t2, t3);
