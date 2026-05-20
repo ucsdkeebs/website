@@ -6,6 +6,9 @@ import Image from 'next/image';
 Modal.setAppElement('#__next');
 
 const customStyles = {
+  overlay:{
+    zIndex: 10
+  },
   content: {
     width: '50%', // Set the width to your desired value
     margin: 'auto', // Center the modal horizontally

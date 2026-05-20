@@ -127,7 +127,7 @@
     border: 1px solid #888;
     width: 90%;
     height: 100%;
-    z-index: 2;
+    z-index: 10;
     text-align: center;
     flex-wrap: wrap;
     font-family: NikkyouSans;
