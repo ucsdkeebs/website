@@ -39,7 +39,7 @@ export const getCheckedInTicketsNoWin = async (): Promise<TicketTailorData[]> =>
 export const getCheckedInByRaffleSlot = async (requestBody: {raffleSlot: number}): Promise<TicketTailorData[]> => {
   try {
     const requestUrl = `${config.api.baseUrl}${config.api.endpoints.ticketTailor.getCheckedInByRaffleSlot}`;
-    const response = await axiosInstance.get<GetCheckedInByRaffleSlot>(requestUrl);
+    const response = await axiosInstance.get<GetCheckedInByRaffleSlot>(requestUrl, {params: { raffleSlot: requestBody.raffleSlot }});
 
     return response.data.tickets;
   } catch (error: any) {
