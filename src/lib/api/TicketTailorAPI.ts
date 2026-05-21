@@ -1,5 +1,5 @@
 import config from "../config";
-import { GetCheckedIn, GetCheckedInNonWin } from "../types/apiResponses";
+import { GetCheckedIn, GetCheckedInNonWin, GetCheckedInByRaffleSlot } from "../types/apiResponses";
 import { TicketTailorData } from "../types/enum";
 import axiosInstance from './axiosInstance';
 
@@ -39,7 +39,7 @@ export const getCheckedInTicketsNoWin = async (): Promise<TicketTailorData[]> =>
 export const getCheckedInByRaffleSlot = async (requestBody: {raffleSlot: number}): Promise<TicketTailorData[]> => {
   try {
     const requestUrl = `${config.api.baseUrl}${config.api.endpoints.ticketTailor.getCheckedInByRaffleSlot}`;
-    const response = await axiosInstance.get<GetCheckedInNonWin>(requestUrl);
+    const response = await axiosInstance.get<GetCheckedInByRaffleSlot>(requestUrl);
 
     return response.data.tickets;
   } catch (error: any) {

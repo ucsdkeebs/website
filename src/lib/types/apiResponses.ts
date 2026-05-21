@@ -44,3 +44,7 @@ export interface GetCheckedIn {
 export interface GetCheckedInNonWin {
   tickets: TicketTailorData[];
 }
+
+export interface GetCheckedInByRaffleSlot {
+  tickets: TicketTailorData[];
+}
