@@ -61,7 +61,7 @@ export default function RaffleSpinner({ admin }: RaffleSpinnerProps) {
       try {
         if (raffleSlot == 'I') {
           console.log('fetching slot 1!');
-          const response = await TicketTailorAPI.getCheckedInByRaffleSlot({raffleSlot: 1});
+          const response = await TicketTailorAPI.getCheckedInByRaffleSlot(1);
 
           const info = await parseData(response);
           console.log(info);
@@ -70,7 +70,7 @@ export default function RaffleSpinner({ admin }: RaffleSpinnerProps) {
         }
         if (raffleSlot == 'II') {
           console.log('fetching slot 2!');
-          const response = await TicketTailorAPI.getCheckedInByRaffleSlot({raffleSlot: 2});
+          const response = await TicketTailorAPI.getCheckedInByRaffleSlot(2);
 
           const info = await parseData(response);
           console.log(info);
@@ -79,7 +79,7 @@ export default function RaffleSpinner({ admin }: RaffleSpinnerProps) {
         }
         if (raffleSlot == 'III') {
           console.log('fetching slot 3!');
-          const response = await TicketTailorAPI.getCheckedInByRaffleSlot({raffleSlot: 3});
+          const response = await TicketTailorAPI.getCheckedInByRaffleSlot(3);
 
           const info = await parseData(response);
           console.log(info);
@@ -88,7 +88,7 @@ export default function RaffleSpinner({ admin }: RaffleSpinnerProps) {
         }
         if (raffleSlot == 'IV') {
           console.log('fetching slot 4!');
-          const response = await TicketTailorAPI.getCheckedInByRaffleSlot({raffleSlot: 4});
+          const response = await TicketTailorAPI.getCheckedInByRaffleSlot(4);
 
           const info = await parseData(response);
           console.log(info);

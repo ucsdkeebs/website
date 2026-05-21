@@ -36,10 +36,10 @@ export const getCheckedInTicketsNoWin = async (): Promise<TicketTailorData[]> =>
 };
 
 // Get tickets by raffle slot (no win)
-export const getCheckedInByRaffleSlot = async (requestBody: {raffleSlot: number}): Promise<TicketTailorData[]> => {
+export const getCheckedInByRaffleSlot = async (raffleSlot: number): Promise<TicketTailorData[]> => {
   try {
     const requestUrl = `${config.api.baseUrl}${config.api.endpoints.ticketTailor.getCheckedInByRaffleSlot}`;
-    const response = await axiosInstance.get<GetCheckedInByRaffleSlot>(requestUrl, {params: { raffleSlot: requestBody.raffleSlot }});
+    const response = await axiosInstance.get<GetCheckedInByRaffleSlot>(requestUrl, {params: { raffleSlot: raffleSlot }});
 
     return response.data.tickets;
   } catch (error: any) {
