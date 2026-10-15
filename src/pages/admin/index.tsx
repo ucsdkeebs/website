@@ -15,6 +15,7 @@ export default function Admin({ user }: AdminProps) {
       <QrScanner admin={user} />
       <Button href="/ticketsView">Go to Tickets View</Button>
       <Button href='/createEvent'>Create An Event</Button>
+      <Button href='/raffleSpinner'>Open the Raffle Spinner</Button>
     </main>
   );
 }
@@ -29,7 +30,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
           destination: "/",
           permanent: false,
         },
-      };
+      };  
     }
 
     return {

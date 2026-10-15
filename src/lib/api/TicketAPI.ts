@@ -2,6 +2,7 @@ import config from "../config";
 import { CheckInResponse, GetAllTicketsResponse } from "../types/apiResponses";
 import axios from "axios";
 import { TicketData } from "../types/enum";
+import axiosInstance from './axiosInstance';
 
 // Check in ticket
 export const checkIn = async (
@@ -9,8 +10,8 @@ export const checkIn = async (
   adminId: string
 ): Promise<CheckInResponse> => {
   try {
-    const requestUrl = `${config.api.baseUrl}${config.api.endpoints.ticket.checkinTicket}/${ticketId}/${adminId}`;
-    const response = await axios.post<CheckInResponse>(requestUrl);
+    const requestUrl = `${config.api.baseUrl}${config.api.endpoints.ticket.checkinTicket}/${ticketId}`;
+    const response = await axiosInstance.post<CheckInResponse>(requestUrl);
 
     return response.data;
   } catch (error: any) {
@@ -27,8 +28,8 @@ export const getAllTickets = async (
   adminId: string
 ): Promise<TicketData[]> => {
   try {
-    const requestUrl = `${config.api.baseUrl}${config.api.endpoints.ticket.getAllTickets}/${adminId}`;
-    const response = await axios.get<GetAllTicketsResponse>(requestUrl);
+    const requestUrl = `${config.api.baseUrl}${config.api.endpoints.ticket.getAllTickets}`;
+    const response = await axiosInstance.get<GetAllTicketsResponse>(requestUrl);
 
     return response.data.tickets;
   } catch (error: any) {
