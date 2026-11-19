@@ -38,3 +38,13 @@ export interface Sponsor {
   url: string;
   image: string;
 }
+
+export interface TicketTailorData {
+  ticketTailorId: string;
+  eventId: string;
+  full_name: string;
+  email: string;
+  checked_in: boolean;
+  raffle_slot: number;
+  won: boolean;
+}

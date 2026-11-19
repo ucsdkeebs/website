@@ -17,7 +17,7 @@ interface EventsProps {
 export default function Events({ events, loggedIn, user }: EventsProps) {
   return (
     <main className={styles.main}>
-            <Banner/>
+           {/** <Banner/> */} 
       <EventHero />
       <UpcomingEvents events={events} loggedIn={loggedIn} user={user} />
     </main>
