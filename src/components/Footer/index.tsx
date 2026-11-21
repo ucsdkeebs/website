@@ -12,13 +12,13 @@ const Footer: React.FC = () => {
         <h3>Contact Us</h3>
         <div className={styles.iconDiv}>
           <Link
-            href="https://www.instagram.com/ucsdkeebs"
+            href="https://www.instagram.com/keebsatucsd"
             className={styles.link}
           >
             <Instagram className={styles.icon} />
             <p>Instagram</p>
           </Link>
-          <Link href="discord.gg/ucsdkeebs" className={styles.link}>
+          <Link href="https://discord.gg/keyboard-club-uc-san-diego-1072686830518009917" className={styles.link}>
             <Discord className={styles.icon} />
             <p>Discord</p>
           </Link>
